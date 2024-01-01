@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload your X-ray image</title>
+
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm border-bottom fixed-top">
+            <a class="navbar-brand ms-3" href="/"><img src="./images/icon.png" alt="BUD Logo"></a>
+            <!-- Links -->
+            <ul class="navbar-nav d-flex justify-content-between">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Introduce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 3</a>
+                </li>
+
+                <li class="nav-item ms-auto">
+                    <a class="nav-link" href="#">Link 3</a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- <img src="./images/icon.png" alt="BUD Logo" width="160" class="position-absolute top-0 start-0"> -->
+        <style>
+            .navbar {
+                background-color: #fffedf;
+                height: 72px;
+            }
+
+            .navbar .navbar-brand img {
+                width: 70px;
+                height: 60px;
+                /* 圆角 */
+                border-radius: 50%;
+            }
+
+            .navbar .nav-item {
+                font-size: 1.1rem;
+                margin-left: .75rem;
+                margin-right: .75rem;
+                color: #5c6f8a;
+            }
+
+            .navbar .nav-link {
+                color: #000;
+                text-decoration: underline;
+            }
+
+            .navbar .nav-link:hover {
+                color: #555;
+            }
+        </style>
+        <!-- <nav class="navbar navbar-expand-sm">
+
+            <a class="navbar-brand" href="/"><img src="./images/icon.bmp" alt="BUD Logo"></a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Introduce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Try</a>
+                </li>
+            </ul>
+
+        </nav> -->
+    </header>
+
+    <main>
+        <div class="container">
+            <h2 class="title text-center">Upload your X-ray image</h2>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4 mx-auto">
+                        <div class="card py-4 shadow-lg"> <!-- 添加了shadow-lg类 -->
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="imageUpload" class="form-label">X-ray Image</label>
+                                        <div class="input-group">
+                                            <input type="file" class="form-control" id="imageUpload" accept="image/*"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="age" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100 mt-4">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <!-- 上传说明 -->
+                        <div class="container py-4">
+                            <h1 class="text-center">Instructions</h1>
+                            <p class="mt-4">Thank you for choosing our service！</p>
+                            <p class="mt-4">
+                                <strong>We need you to:</strong>
+                            <ul>
+                                <li>Upload a front view X-ray of your child's hand.</li>
+                                <li>Fill in the age of your child.</li>
+                            </ul>
+                            </p>
+                            <p class="mt-4">This is for us to conduct a bone age assessment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div>
+            <img src="./images/titlebg.bmp" alt="" aria-hidden="true">
+        </div> -->
+            <style>
+                .card {
+                    max-width: 340px;
+                }
+
+                .title {
+                    /* text-align: center; */
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #5c6f8a;
+                }
+
+                h1.title {
+                    font-size: 4rem;
+                    color: #000;
+                }
+
+                h2.title {
+                    font-size: 2.5rem;
+                    color: #000;
+                }
+
+                main {
+                    margin-top: 122px;
+                }
+            </style>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
