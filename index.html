@@ -80,11 +80,46 @@
         </nav> -->
     </header>
     <main>
-        <div class="container">
-            <p class="center-title"><img src="./images/bud.png" alt="BUD Logo" width="250px" class="mx-auto"></p>
+        <style>
+            @font-face {
+                font-family: 'Book Antiqua 2';
+                src: url('./fonts/BKANT.TTF') format('truetype'),
+                    url('./fonts/ANTQUAB.TTF') format('truetype');
+            }
+
+            html,
+            body {
+                /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+                font-family: 'Book Antiqua 2', serif;
+            }
+
+            /* h1.center-title {
+                text-shadow: -0.05834878em 0.022398em 0em rgba(255, 141, 85, 0.400000);
+            } */
+
+            .title-img {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+                position: absolute;
+                width: 750px;
+                height: auto;
+                top: -125px;
+                right: -50px;
+            }
+
+            .title-container {
+                width: calc(100vw - 750px);
+                margin-left: 75px;
+            }
+        </style>
+        <img src="./images/titlebg.bmp" class="title-img rounded-pill" alt="" aria-hidden="true">
+
+        <div class="title-container">
+            <p class="center-title text-center"><img src="./images/bud.png" alt="BUD Logo" width="250px"
+                    class="mx-auto"></p>
             <!-- <p class="center-title">Bone Age Evaluation</p> -->
             <h1 class="center-title">Sercue your children’s flourish.</h1>
-            <p class="center-title mt-3">Detecting kid’s hidden deformity with a platform armed with neural networks (AI
+            <p class="center-title mt-3">Detecting kid’s hidden deformity with a platform armed with neural networks
+                (AI
                 tools) for conducting tests.</p>
             <button class="btn bg-lightgreen introduction-subtitle mt-5 px-5 py-3 my-2 rounded-pill d-block mx-auto">TRY
                 BUD NOW</button>
@@ -115,7 +150,7 @@
         </div> -->
         <style>
             .center-title {
-                text-align: center;
+                /* text-align: center; */
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #5c6f8a;
