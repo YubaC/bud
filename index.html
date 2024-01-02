@@ -87,6 +87,11 @@
                     url('./fonts/ANTQUAB.TTF') format('truetype');
             }
 
+            @font-face {
+                font-family: 'Eras Medium ITC';
+                src: url('./fonts/ERASMD.TTF') format('truetype');
+            }
+
             .title {
                 /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
                 font-family: 'Book Antiqua', serif;
@@ -307,6 +312,85 @@
             .user-image {
                 width: 100px;
             }
+
+
+            .user-comments {
+                min-height: 600px;
+                position: relative;
+                padding: 5px 0;
+                background: #fff;
+                background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
+                background: -wbkit-linear-gradient(0% 0% 270deg, #fff, #fff 10%, #f3f3f3);
+                background: -o-linear-gradient(0% 0% 270deg, #fff, #fff 10%, #f3f3f3);
+                background: -moz-linear-gradient(0% 0% 270deg, #fff, #fff 10%, #f3f3f3);
+                border: 1px solid #ccc;
+                -webkit-border-radius: 60px 5px;
+                -moz-border-radius: 60px/5px;
+                border-radius: 60px/5px;
+                -webkit-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
+                -moz-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
+                box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
+
+            }
+
+            .user-comments:before {
+                content: '';
+                width: 50px;
+                height: 50px;
+                top: 0;
+                right: 0;
+                position: absolute;
+                display: inline-block;
+                z-index: -1;
+                -webkit-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+                box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+                -webkit-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
+                -moz-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
+                -o-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
+                transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
+
+            }
+
+            .user-comments:after {
+                content: '';
+                width: 100px;
+                height: 100px;
+                top: 0;
+                left: 0;
+                position: absolute;
+                z-index: -1;
+                display: inline-block;
+                -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+                box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+                -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+                -moz-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+                -o-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+                transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+
+            }
+
+            .user-comments .ribbon {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 130px;
+                height: 40px;
+                background: rgba(0, 0, 0, 0.1);
+                background: -webkit-gradient(linear, 555% 20%, 0% 92%, from(rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.0)), color-stop(.1, rgba(0, 0, 0, 0.2)));
+                background: -moz-linear-gradient(555% 0% 180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0.0));
+                border-left: 1px dashed rgba(0, 0, 0, 0.1);
+                border-right: 1px dashed rgba(0, 0, 0, 0.1);
+                -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+                box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+                -webkit-transform: rotate(6deg) skew(0, 0) translate(-60%, -5px);
+                -moz-transform: rotate(6deg) skew(0, 0) translate(-60%, -5px);
+                -o-transform: rotate(6deg) skew(0, 0) translate(-60%, -5px);
+                transform: rotate(6deg) skew(0, 0) translate(-60%, -5px);
+
+            }
         </style>
 
         <section class="container mt-divider">
@@ -314,7 +398,8 @@
                 And listen from our previous customers...
             </h2>
 
-            <div class="card shadow-lg p-4">
+            <div class="user-comments mt-5 p-4">
+                <div class="ribbon"></div>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#user0-comment">
@@ -326,36 +411,75 @@
                             <img src="./images/user1.jpg" class="user-image rounded-circle" alt="A previous user.">
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#user2-comment">
+                            <img src="./images/user2.jpg" class="user-image rounded-circle" alt="A previous user.">
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content mt-4 p-4">
-                    <div id="user0-comment" class="container tab-pane active">
+                    <div id="user0-comment" class="container tab-pane fade active show">
                         <p class="lead">
-                            Every day, I count my blessings, and lately, there's one more to add to the list – this new
-                            medical system called bud. You see, my little one's been growing a bit slower than others,
-                            and getting to a doctor, with the long trips and the bills that feel like mountains, just
-                            hasn't been feasible. But then I found bud. It's like a ray of sunshine on a cloudy day. I
+                            "Every day, I count my blessings, and lately, there's one more to add to the list – this
+                            new
+                            medical system called bud. You see, my little one's been growing a bit slower than
+                            others,
+                            and getting to a doctor, with the long trips and the bills that feel like mountains,
+                            just
+                            hasn't been feasible. But then I found bud. It's like a ray of sunshine on a cloudy day.
+                            I
                             can manage everything right from our cozy living room. No need to take time off work, no
-                            long drives to distant hospitals, and it doesn’t cost an arm and a leg. It's such a relief
-                            to have something that's easy to use and actually affordable. I'm really grateful for how
-                            it's made caring for my child simpler. It's like a helping hand at a time when I needed it
-                            the most. We're finally seeing some positive changes, and that's a weight off my shoulders.
+                            long drives to distant hospitals, and it doesn’t cost an arm and a leg. It's such a
+                            relief
+                            to have something that's easy to use and actually affordable. I'm really grateful for
+                            how
+                            it's made caring for my child simpler. It's like a helping hand at a time when I needed
+                            it
+                            the most. We're finally seeing some positive changes, and that's a weight off my
+                            shoulders.
                             Bud's given us more than just medical help; it's given us hope, and in our little world,
-                            that means everything
+                            that means everything."
                         </p>
                     </div>
 
                     <div id="user1-comment" class="container tab-pane fade">
                         <p class="lead">
-                            "Oh, I just have to share this with y'all. My little one's been having some growth issues,
-                            and getting to the doctor has always been such a hassle, not to mention the bills that pile
-                            up afterwards. But then I found this system called 'bud.' It's been a godsend, honestly. I
-                            can do everything from home, which means no taking off work or long trips to the city. It's
-                            quick, easy, and doesn't cost an arm and a leg. I'm just so grateful for it. It's given us a
+                            "Oh, I just have to share this with y'all. My little one's been having some growth
+                            issues,
+                            and getting to the doctor has always been such a hassle, not to mention the bills that
+                            pile
+                            up afterwards. But then I found this system called 'bud.' It's been a godsend, honestly.
+                            I
+                            can do everything from home, which means no taking off work or long trips to the city.
+                            It's
+                            quick, easy, and doesn't cost an arm and a leg. I'm just so grateful for it. It's given
+                            us a
                             bit of hope and a lot of relief in our daily struggles. Truly, I can't tell you how much
                             lighter it feels knowing I can take care of my child's health without the added stress.
                             Bud's been a blessing for us."
+                        </p>
+                    </div>
+
+                    <div id="user2-comment" class="container tab-pane fade">
+                        <p class="lead">
+                            "As a doctor who has long been committed to integrating modern technology into medical
+                            practice,
+                            I am extremely excited about our trial of the bud medical system. Ever since I saw the
+                            urgent
+                            need for accessible healthcare in my hometown, I have dreamed of how to use technology to
+                            improve people's health. Now, this high-tech product, which combines AI technology, has
+                            shown me
+                            a new possibility. Its performance is astonishing, with a quality that nearly rivals that of
+                            real-life physicians in diagnostics. This not only reminds me of my passionate exploration
+                            of
+                            medical technology during my university days but also ignites my imagination for the future.
+                            I
+                            really like this system. I believe it will not only help us doctors work more effectively
+                            but
+                            also offer patients faster and more accurate medical services. This is exactly the goal I've
+                            been pursuing since the beginning of my medical career."
                         </p>
                     </div>
                 </div>
