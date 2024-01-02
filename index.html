@@ -613,10 +613,32 @@
                 font-size: 1.15em;
             }
 
+            .table tr td,
+            .table tr th {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            table tbody td:nth-child(odd) {
+                color: #5c6f8a;
+            }
+
+            table tbody td:nth-child(odd)::before {
+                content: "❌";
+                margin-right: 10px;
+            }
+
             table tbody td:nth-child(even) {
                 /* bold */
                 font-weight: 600;
                 text-align: right;
+            }
+
+            table tbody td:nth-child(even)::after {
+                content: "✔︎";
+                font-size: 1.25em;
+                color: green;
+                margin-left: 10px;
             }
         </style>
 
@@ -627,7 +649,7 @@
             <p class="title">
                 Our system has many advantages over traditional hospital checks...
             </p>
-            <table class="table table-striped mt-4">
+            <table class="table mt-4">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">Traditional Hospital Check</th>
