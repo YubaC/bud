@@ -1,5 +1,6 @@
 body {
     min-height: 100vh;
+    overflow-x: hidden;
     background-color: #fffedf;
     font-family: "Roboto", sans-serif;
     font-size: 16px;

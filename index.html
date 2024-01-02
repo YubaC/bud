@@ -256,9 +256,13 @@
                 box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
                 transform: rotate(-30deg) skew(0, 0) translate(-30px, -20px);
             }
+
+            .colored-card {
+                border-radius: 2rem;
+            }
         </style>
         <section class="container mt-divider">
-            <div class="card text-white p-5" style="background-color: #011113;">
+            <div class="colored-card text-white p-5" style="background-color: #011113;">
                 <div class="row">
                     <div class="col-md-7">
                         <h2 class="title text-white mt-5">Bone age —— the key indicator of children's development.</h2>
@@ -647,7 +651,7 @@
                 Traditional Hospital Check vs. BUD
             </h2>
             <p class="title">
-                Our system has many advantages over traditional hospital checks...
+                Our system has many advantages over traditional hospital checks!
             </p>
             <table class="table mt-4">
                 <thead class="text-center">
@@ -912,10 +916,87 @@
             .text-lightyellow {
                 color: var(--bg-lightyellow);
             }
+
+            .text-darkgreen {
+                color: var(--bg-darkgreen);
+            }
+
+            footer a {
+                text-decoration: none;
+                color: #000;
+                font-weight: 600;
+                width: fit-content;
+                /* margin-left: auto; */
+                margin-right: auto;
+            }
+
+            footer a:hover {
+                text-decoration: none;
+                color: #666;
+            }
+
+            footer img {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+            }
         </style>
 
     </main>
-    <footer></footer>
+
+    <footer>
+        <div class="colored-card position-relative bg-lightgreen p-5 mx-4 mb-5">
+            <img src="./images/world.png" width="40%" alt="" aria-hidden="true">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="title">See <span class="text-danger"><u>BUD</u></span><br>in Action!</h1>
+                    <p class="h5 mt-4">
+                        Just try it out and see how it works!
+                    </p>
+                    <button class="btn btn-light introduction-subtitle mt-3 px-5 py-3 my-2 rounded-pill d-block">TRY
+                        IT OUT</button>
+                    <p class="h5">
+                        <span class="introduce-icon">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                </div>
+            </div>
+
+            <div class="row mt-divider w-50">
+                <div class="col-md-4 me-auto">
+                    <h3 class="h4 mb-4 fw-bold">Universities</h3>
+                    <a class="d-block mb-4" href="https://www.ntu.edu.sg/">NTU</a>
+                    <a class="d-block mb-4" href="https://www.cczu.edu.cn/">CCZU</a>
+                </div>
+                <div class="col-md-4 me-auto">
+                    <h3 class="h4 mb-4 fw-bold">Organization</h3>
+                    <a class="d-block mb-4" href="https://yuba.tech">Yuba Technology</a>
+                    <a class="d-block mb-4" href="https://github.com/catiilonyzhang">CatiilonyZhang</a>
+                    <a class="d-block mb-4" href="https://github.com/yubac">YubaC</a>
+                </div>
+                <div class="col-md-4 me-auto">
+                    <h3 class="h4 mb-4 fw-bold">Contact</h3>
+                    <a class="d-block mb-4" href="https://yuba.tech">Contact Support</a>
+                    <a class="d-block mb-4" href="https://blog.yuba.tech">Blog</a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div>
+                <p>Powered by <a href="https://yuba.tech">Yuba Technology</a>. All rights reserved.</p>
+                <p>
+                    The BUD system is a preliminary bone age assessment platform based on deep learning technology. Due
+                    to the inherent uncertainties of AI and regional differences in bone age assessment standards and
+                    humans' health condition, deviations in results may occur when compared with those obtained by other
+                    physicians and diagnostic equipment. Our product is not a substitute for professional pediatric
+                    care, and all results should be considered for reference only. Should the assessment suggest any
+                    abnormalities in your child's development, we urge you to seek further examination and professional
+                    medical advice at a specialized pediatric institution. We accept no responsibility for any
+                    irreversible consequences arising from self-treatment based on our system’s results.
+                </p>
+            </div>
+    </footer>
 </body>
 
 </html>
