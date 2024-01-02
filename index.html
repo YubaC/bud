@@ -82,18 +82,21 @@
     <main>
         <style>
             @font-face {
-                font-family: 'Book Antiqua 2';
+                font-family: 'Book Antiqua';
                 src: url('./fonts/BKANT.TTF') format('truetype'),
                     url('./fonts/ANTQUAB.TTF') format('truetype');
             }
 
-            html,
-            body {
+            .title {
                 /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-                font-family: 'Book Antiqua 2', serif;
+                font-family: 'Book Antiqua', serif;
             }
 
-            /* h1.center-title {
+            .sticky-note {
+                font-family: 'Eras Medium ITC', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            /* h1.title {
                 text-shadow: -0.05834878em 0.022398em 0em rgba(255, 141, 85, 0.400000);
             } */
 
@@ -110,89 +113,332 @@
                 width: calc(100vw - 750px);
                 margin-left: 75px;
             }
+
+            .mt-divider {
+                margin-top: 100px;
+            }
         </style>
         <img src="./images/titlebg.bmp" class="title-img rounded-pill" alt="" aria-hidden="true">
 
         <div class="title-container">
-            <p class="center-title text-center"><img src="./images/bud.png" alt="BUD Logo" width="250px"
-                    class="mx-auto"></p>
-            <!-- <p class="center-title">Bone Age Evaluation</p> -->
-            <h1 class="center-title">Sercue your children’s flourish.</h1>
-            <p class="center-title mt-3">Detecting kid’s hidden deformity with a platform armed with neural networks
+            <p class="title text-center"><img src="./images/bud.png" alt="BUD Logo" width="250px" class="mx-auto"></p>
+            <!-- <p class="title">Bone Age Evaluation</p> -->
+            <h1 class="title">Sercue your children’s flourish.</h1>
+            <p class="title mt-3">Detecting kid’s hidden deformity with a platform armed with neural networks
                 (AI
                 tools) for conducting tests.</p>
-            <button class="btn bg-lightgreen introduction-subtitle mt-5 px-5 py-3 my-2 rounded-pill d-block mx-auto">TRY
+            <button class="btn bg-lightgreen introduction-subtitle mt-5 px-5 py-3 my-2 rounded-pill d-block">TRY
                 BUD NOW</button>
         </div>
 
-        <div class="container mt-5 rounded border border-1">
-            <div class="row">
-                <div class="col-4">
-                    <img src="./images/doctor-with-x-ray.png" class="" height="250px" width="250px" alt="">
-                </div>
+        <!-- <div id="test0">
+            Y'know, I've always been big on making sure my kids are healthy and thriving. That's why, when I heard about
+            this new medical system called 'bud', I was intrigued. I gave it a try, and let me tell you, it's been a
+            game changer for us. The convenience of being able to monitor my kids' health right from home, without
+            having to trek all the way to a distant hospital, is just invaluable. It's easy to use too, which is a plus
+            for a busy dad like me. I can check on my kids' growth and well-being right here, in the comfort of our
+            home. It's reassuring, you know? As a parent, there's nothing more important than the health of your
+            children. And 'bud' helps me keep a close eye on that. I'm really grateful for this system; it's given me
+            peace of mind and more time to spend with my kids. That's what it's all about at the end of the day, being
+            there for them, in every way possible.
+            <style>
+                #test0 {
+                    min-width: 100px;
+                    min-height: 100px;
+                    max-width: 50%;
+                    width: fit-content;
+                    height: fit-content;
+                    padding: 7.5%;
+                    background-image: url("./images/dialog-box-1.svg");
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                }
+            </style>
+        </div> -->
 
-                <div class="col-8 d-flex justify-content-center align-items-center">
-                    <h1 class="h2">We want to offer professional and afordable bone age and other children's
-                        deformity
-                        evaluation for
-                        everyone!</h1>
+        <style>
+            .introduce-icon {
+                font-size: 3rem;
+                line-height: 1.4em;
+                text-align: center;
+                /* text-transform: uppercase; */
+                letter-spacing: 0.3rem;
+                /* border-radius: 50%; */
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+
+        <section class="container mt-divider">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="introduce-icon d-inline-block mb-2">
+
+                    </div>
+                    <style>
+                        .sticky-note {
+                            padding: 0 0 1px 0;
+                            background: #fff;
+                            background: -webkit-gradient(linear, 100% 100%, 50% 10%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
+                            background: -webkit-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                            background: -o-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                            background: -moz-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                            border: 1px solid #ccc;
+                            -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                            -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                            -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                            -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                            border-radius: 0 0 60px 0 / 0 0 5px 0;
+
+                        }
+
+                        .sticky-note:before {
+                            content: '';
+                            width: 98%;
+                            z-index: -1;
+                            height: 100%;
+                            padding: 0 0 1px 0;
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            background: #fff;
+                            background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f9f9f9), color-stop(.1, #fff));
+                            background: -webkit-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                            background: -o-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                            background: -moz-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                            border: 1px solid #ccc;
+                            -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                            -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                            -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                            -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                            border-radius: 0 0 60px 0 / 0 0 5px 0;
+                            -webkit-transform: skew(2deg, 2deg) translate(3px, 8px);
+                            -moz-transform: skew(2deg, 2deg) translate(3px, 8px);
+                            -o-transform: skew(2deg, 2deg) translate(3px, 8px);
+                            transform: skew(2deg, 2deg) translate(3px, 8px);
+
+                        }
+
+                        .sticky-note:after {
+                            content: '';
+                            width: 98%;
+                            z-index: -1;
+                            height: 98%;
+                            padding: 0 0 1px 0;
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            background: #fff;
+                            background: -webkit-gradient(linear, 0% 20%, 0% 100%, from(#f3f3f3), to(#f6f6f6), color-stop(.1, #fff));
+                            background: -webkit-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                            background: -o-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                            background: -moz-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                            border: 1px solid #ccc;
+                            -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                            -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                            -webkit-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                            -moz-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                            -o-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                            transform: skew(2deg, 2deg) translate(-1px, 2px);
+                        }
+
+                        .sticky-note .ribbon {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 130px;
+                            height: 40px;
+                            border: 1px solid rgba(200, 200, 200, .8);
+                            background: rgba(254, 254, 254, .6);
+                            box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+                            transform: rotate(-30deg) skew(0, 0) translate(-30px, -20px);
+                        }
+                    </style>
+                    <div class="card sticky-note shadow-lg">
+                        <div class="ribbon"></div>
+                        <h2 class="title card-header p-3 text-center">What is BUD?</h2>
+                        <div class="card-body p-5">
+                            <p class="lead fw-normal">
+                                BUD is a <b>online medical system</b> installed with AI tools based on deep learning.
+                            </p>
+                            <p>
+                                Parents only need
+                                to upload a X-ray taken by their communnity hospitals to evaluate their bone age to
+                                detect
+                                any
+                                hidden deformity.</p>
+                            <p> Compared to problematic typical means, it is extremly CHEAP AND EFFIECENT!</p>
+                            <p class="text-secondary"><a href="./HIGY.pptx">Still confused? Download our prochure.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 ps-md-5">
+                    <img src="./images/doctor-checking-bone-age.png" width="100%"
+                        alt="A doctor checking a child's bone age with AI tools.">
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="container mt-5">
-            <h2 class="center-title">Easy Access</h2>
-            <p class="center-title mt-3">Simply upload an X-ray image taken at your nearest community hospital, log
-                into our system, and enjoy our services from the comfort of your home!</p>
-        </div>
-        <!-- <div>
-            <img src="./images/titlebg.bmp" alt="" aria-hidden="true">
-        </div> -->
+        <section class="container mt-divider text-center">
+            <h2 class="title">Why choose us?</h2>
+            <img src="./images/why-bud.svg" width="85%" alt="1. Easy Access
+            Simply upload an X-ray image taken at your nearest community hospital, log into our system, and enjoy our services from the comfort of your home!
+        2. Cheap and Efficient
+            No longer pay for expensive bill in such service and say goodbye to bothering reservation and quene!
+        3. Professional
+            Different  type of machine can give quite different results, cause confuse
+        ">
+        </section>
+
         <style>
-            .center-title {
+            .user-images-list {
+                list-style: none;
+            }
+
+            .user-image-container {
+                margin: 20px;
+            }
+
+            .user-image {
+                width: 100px;
+            }
+        </style>
+
+        <section class="container mt-divider">
+            <h2 class="title">
+                And listen from our previous customers...
+            </h2>
+
+            <div class="card shadow-lg p-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#user0-comment">
+                            <img src="./images/user0.jpg" class="user-image rounded-circle" alt="A previous user.">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#user1-comment">
+                            <img src="./images/user1.jpg" class="user-image rounded-circle" alt="A previous user.">
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content mt-4 p-4">
+                    <div id="user0-comment" class="container tab-pane active">
+                        <p class="lead">
+                            Every day, I count my blessings, and lately, there's one more to add to the list – this new
+                            medical system called bud. You see, my little one's been growing a bit slower than others,
+                            and getting to a doctor, with the long trips and the bills that feel like mountains, just
+                            hasn't been feasible. But then I found bud. It's like a ray of sunshine on a cloudy day. I
+                            can manage everything right from our cozy living room. No need to take time off work, no
+                            long drives to distant hospitals, and it doesn’t cost an arm and a leg. It's such a relief
+                            to have something that's easy to use and actually affordable. I'm really grateful for how
+                            it's made caring for my child simpler. It's like a helping hand at a time when I needed it
+                            the most. We're finally seeing some positive changes, and that's a weight off my shoulders.
+                            Bud's given us more than just medical help; it's given us hope, and in our little world,
+                            that means everything
+                        </p>
+                    </div>
+
+                    <div id="user1-comment" class="container tab-pane fade">
+                        <p class="lead">
+                            "Oh, I just have to share this with y'all. My little one's been having some growth issues,
+                            and getting to the doctor has always been such a hassle, not to mention the bills that pile
+                            up afterwards. But then I found this system called 'bud.' It's been a godsend, honestly. I
+                            can do everything from home, which means no taking off work or long trips to the city. It's
+                            quick, easy, and doesn't cost an arm and a leg. I'm just so grateful for it. It's given us a
+                            bit of hope and a lot of relief in our daily struggles. Truly, I can't tell you how much
+                            lighter it feels knowing I can take care of my child's health without the added stress.
+                            Bud's been a blessing for us."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- <ul class="user-images-list">
+                <li class="user-image-container">
+                    <img src="./images/user0.jpg" class="user-image rounded-circle" alt="A previous user.">
+                </li>
+                <li class="user-image-container">
+                    <img src="./images/user1.jpg" class="user-image rounded-circle" alt="A previous user.">
+                </li>
+            </ul> -->
+            <!-- <div class="row mt-5">
+                <div class="user-info col-md-5 card px-0">
+                    <div class="card-header d-flex justify-content-center align-items-center p-0">
+                        <img src="./images/user0.jpg" class="rounded-top" alt="A previous user.">
+                    </div>
+                    <div class="card-body">
+                        <p class="lead fw-normal">
+                            "Oh, I just have to share this with y'all. My little one's been having some growth issues,
+                            and getting to the doctor has always been such a hassle, not to mention the bills that pile
+                            up afterwards. But then I found this system called 'bud.' It's been a godsend, honestly. I
+                            can do everything from home, which means no taking off work or long trips to the city. It's
+                            quick, easy, and doesn't cost an arm and a leg. I'm just so grateful for it. It's given us a
+                            bit of hope and a lot of relief in our daily struggles. Truly, I can't tell you how much
+                            lighter it feels knowing I can take care of my child's health without the added stress.
+                            Bud's been a blessing for us."
+                        </p>
+                    </div>
+                    <div class="card-footer title text-center">
+                        T.F. <br>USA
+                    </div>
+                </div> -->
+            <!-- <div class="col-md-4 d-flex align-items-center">
+                    <img src="./images/user0.jpg" width="60%" class="rounded-circle" alt="A previous user.">
+                </div> -->
+            <!-- <div class="col-md-1 user-comment-angle"></div> -->
+            <!-- <div class="col-md-7">
+                <div class="user-comment card shadow-lg">
+                    <div class="card-body p-5">
+                        <p class="lead fw-normal">
+                            Y'know, I've always been big on making sure my kids are healthy and thriving. That's
+                            why,
+                            when I heard about this new medical system called 'bud', I was intrigued. I gave it a
+                            try, and let me tell you, it's been a game changer for us. The convenience of being
+                            able to monitor my kids' health right from home, without having to trek all the way to
+                            a distant hospital, is just invaluable. It's easy to use too, which is a plus for a
+                            busy dad like me. I can check on my kids' growth and well-being right here, in the
+                            comfort of our home. It's reassuring, you know? As a parent, there's nothing more
+                            important than the health of your children. And 'bud' helps me keep a close eye on
+                            that. I'm really grateful for this system; it's given me peace of mind and more time
+                            to spend with my kids. That's what it's all about at the end of the day, being there
+                            for them, in every way possible.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+        <style>
+            .title {
                 /* text-align: center; */
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #5c6f8a;
             }
 
-            h1.center-title {
+            h1.title {
                 font-size: 4rem;
                 color: #000;
             }
 
-            h2.center-title {
+            h2.title {
                 font-size: 2.5rem;
                 color: #000;
             }
 
             main {
                 margin-top: 102px;
+                padding-bottom: 100px;
             }
         </style>
-        </div>
-        <div class="flex-container">
-            <div class="introduction-section ms-5">
-                <!-- <h1 class="introduction-title text-center">
-                    <span>Bone Age Evaluation</span>
-                </h1> -->
-                <!-- <h1 class="introduction-title text-center">
-                    <span>NO MORE</span>
-                    <span class="introduction-subtitle">some specific kind of</span>
-                    <span>Expensive<span class="money-symbol">💸</span></span>
-                    <span class="introduction-subtitle">and</span>
-                    <span><span class="clock-symbol"></span>Time-Comsuming</span>
-                    <span>Medical Tests</span>
-                </h1>
-                <p class="introduction-subtitle">AI-Based Tool</p>
-                <button class="btn bg-lightgreen introduction-subtitle px-5 py-3 my-2 rounded-pill d-block mx-auto">Try
-                    Now</button>
-                <p class="introduction-subtitle">Start a free trial!</p> -->
-            </div>
-            <!-- <div class="img-container">
-                <img src="./images/titlebg.bmp" alt="图片描述">
-            </div> -->
-        </div>
+
         <style>
             .container {
                 width: 100%;
@@ -360,7 +606,8 @@
             :root {
                 --bg-lightgreen: #b5cc54;
                 --bg-darkgreen: #71b052;
-                --bg-yellow: #f1c74d;
+                --bg-darkyellow: #f1c74d;
+                --bg-lightyellow: #f8e396;
             }
 
             .bg-lightgreen {
@@ -371,8 +618,16 @@
                 background-color: var(--bg-darkgreen);
             }
 
-            .bg-yellow {
-                background-color: var(--bg-yellow);
+            .bg-lightyellow {
+                background-color: var(--bg-lightyellow);
+            }
+
+            .bg-darkyellow {
+                background-color: var(--bg-darkyellow);
+            }
+
+            .bg-transparent {
+                background-color: transparent;
             }
         </style>
 
