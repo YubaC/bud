@@ -175,94 +175,121 @@
             }
         </style>
 
+        <style>
+            .sticky-note {
+                padding: 0 0 1px 0;
+                background: #fff;
+                background: -webkit-gradient(linear, 100% 100%, 50% 10%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
+                background: -webkit-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                background: -o-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                background: -moz-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
+                border: 1px solid #ccc;
+                -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+                -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                border-radius: 0 0 60px 0 / 0 0 5px 0;
+
+            }
+
+            .sticky-note:before {
+                content: '';
+                width: 98%;
+                z-index: -1;
+                height: 100%;
+                padding: 0 0 1px 0;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #fff;
+                background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f9f9f9), color-stop(.1, #fff));
+                background: -webkit-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                background: -o-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                background: -moz-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
+                border: 1px solid #ccc;
+                -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+                -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
+                border-radius: 0 0 60px 0 / 0 0 5px 0;
+                -webkit-transform: skew(2deg, 2deg) translate(3px, 8px);
+                -moz-transform: skew(2deg, 2deg) translate(3px, 8px);
+                -o-transform: skew(2deg, 2deg) translate(3px, 8px);
+                transform: skew(2deg, 2deg) translate(3px, 8px);
+
+            }
+
+            .sticky-note:after {
+                content: '';
+                width: 98%;
+                z-index: -1;
+                height: 98%;
+                padding: 0 0 1px 0;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #fff;
+                background: -webkit-gradient(linear, 0% 20%, 0% 100%, from(#f3f3f3), to(#f6f6f6), color-stop(.1, #fff));
+                background: -webkit-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                background: -o-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                background: -moz-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
+                border: 1px solid #ccc;
+                -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                -webkit-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                -moz-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                -o-transform: skew(2deg, 2deg) translate(-1px, 2px);
+                transform: skew(2deg, 2deg) translate(-1px, 2px);
+            }
+
+            .sticky-note .ribbon {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 130px;
+                height: 40px;
+                border: 1px solid rgba(200, 200, 200, .8);
+                background: rgba(254, 254, 254, .6);
+                box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
+                transform: rotate(-30deg) skew(0, 0) translate(-30px, -20px);
+            }
+        </style>
+        <section class="container mt-divider">
+            <div class="card text-white p-5" style="background-color: #011113;">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2 class="title text-white mt-5">Bone age —— the key indicator of children's development.</h2>
+                        <p class="h4 mt-5 text-lightyellow">
+                            Bone age assessment is like a growth chart for your child's bones, comparing their
+                            development
+                            to averages.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="./images/hand-x-ray.JPG" width="85%" alt="A child's hand's x-ray image.">
+                    </div>
+                </div>
+
+                <p class="h5 mt-4">
+                    An X-ray of the hand shows if bones are maturing properly, indicating overall health. It's
+                    simple and quick,
+                    revealing if growth is too fast or slow, which may signal health issues. Early detection
+                    through
+                    this test
+                    is key to preventing future growth problems or deformities, ensuring children stay on track
+                    for
+                    healthy
+                    development.
+                </p>
+            </div>
+        </section>
+
         <section class="container mt-divider">
             <div class="row align-items-center">
                 <div class="col-md-5">
-                    <div class="introduce-icon d-inline-block mb-2">
-
-                    </div>
-                    <style>
-                        .sticky-note {
-                            padding: 0 0 1px 0;
-                            background: #fff;
-                            background: -webkit-gradient(linear, 100% 100%, 50% 10%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
-                            background: -webkit-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
-                            background: -o-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
-                            background: -moz-linear-gradient(100% 50%, #fff, #fff 10%, #f3f3f3);
-                            border: 1px solid #ccc;
-                            -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-                            -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-                            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-                            -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
-                            -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
-                            border-radius: 0 0 60px 0 / 0 0 5px 0;
-
-                        }
-
-                        .sticky-note:before {
-                            content: '';
-                            width: 98%;
-                            z-index: -1;
-                            height: 100%;
-                            padding: 0 0 1px 0;
-                            position: absolute;
-                            bottom: 0;
-                            right: 0;
-                            background: #fff;
-                            background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f9f9f9), color-stop(.1, #fff));
-                            background: -webkit-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
-                            background: -o-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
-                            background: -moz-linear-gradient(0 0 270deg, #fff, #fff 10%, #f9f9f9);
-                            border: 1px solid #ccc;
-                            -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
-                            -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
-                            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
-                            -moz-border-radius: 0 0 60px 0 / 0 0 5px 0;
-                            -webkit-border-radius: 0 0 60px 0 / 0 0 5px 0;
-                            border-radius: 0 0 60px 0 / 0 0 5px 0;
-                            -webkit-transform: skew(2deg, 2deg) translate(3px, 8px);
-                            -moz-transform: skew(2deg, 2deg) translate(3px, 8px);
-                            -o-transform: skew(2deg, 2deg) translate(3px, 8px);
-                            transform: skew(2deg, 2deg) translate(3px, 8px);
-
-                        }
-
-                        .sticky-note:after {
-                            content: '';
-                            width: 98%;
-                            z-index: -1;
-                            height: 98%;
-                            padding: 0 0 1px 0;
-                            position: absolute;
-                            bottom: 0;
-                            right: 0;
-                            background: #fff;
-                            background: -webkit-gradient(linear, 0% 20%, 0% 100%, from(#f3f3f3), to(#f6f6f6), color-stop(.1, #fff));
-                            background: -webkit-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
-                            background: -o-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
-                            background: -moz-linear-gradient(0 0 360deg, #f3f3f3, #fff 10%, #f6f6f6);
-                            border: 1px solid #ccc;
-                            -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-                            -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-                            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-                            -webkit-transform: skew(2deg, 2deg) translate(-1px, 2px);
-                            -moz-transform: skew(2deg, 2deg) translate(-1px, 2px);
-                            -o-transform: skew(2deg, 2deg) translate(-1px, 2px);
-                            transform: skew(2deg, 2deg) translate(-1px, 2px);
-                        }
-
-                        .sticky-note .ribbon {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 130px;
-                            height: 40px;
-                            border: 1px solid rgba(200, 200, 200, .8);
-                            background: rgba(254, 254, 254, .6);
-                            box-shadow: 0px 0 3px rgba(0, 0, 0, 0.1);
-                            transform: rotate(-30deg) skew(0, 0) translate(-30px, -20px);
-                        }
-                    </style>
                     <div class="card sticky-note shadow-lg">
                         <div class="ribbon"></div>
                         <h2 class="title card-header p-3 text-center">What is BUD?</h2>
@@ -790,6 +817,10 @@
 
             .bg-transparent {
                 background-color: transparent;
+            }
+
+            .text-lightyellow {
+                color: var(--bg-lightyellow);
             }
         </style>
 
