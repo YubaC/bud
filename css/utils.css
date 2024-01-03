@@ -1,0 +1,89 @@
+/* ====colors==== */
+:root {
+    --bg-lightgreen: #b5cc54;
+    --bg-darkgreen: #71b052;
+    --bg-darkyellow: #f1c74d;
+    --bg-lightyellow: #f8e396;
+}
+
+.bg-lightgreen {
+    background-color: var(--bg-lightgreen);
+}
+
+.bg-darkgreen {
+    background-color: var(--bg-darkgreen);
+}
+
+.bg-lightyellow {
+    background-color: var(--bg-lightyellow);
+}
+
+.bg-darkyellow {
+    background-color: var(--bg-darkyellow);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.text-lightyellow {
+    color: var(--bg-lightyellow);
+}
+
+.text-darkgreen {
+    color: var(--bg-darkgreen);
+}
+
+/* ====fonts==== */
+@font-face {
+    font-family: "Book Antiqua";
+    src: url("/fonts/BKANT.TTF") format("truetype"),
+        url("/fonts/ANTQUAB.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "Eras Medium ITC";
+    src: url("/fonts/ERASMD.TTF") format("truetype");
+}
+
+/* ====set type==== */
+
+/* ----colored card---- */
+.colored-card {
+    border-radius: 2rem;
+}
+
+/* ----.title class---- */
+.title {
+    font-family: "Book Antiqua", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5c6f8a;
+}
+
+h1.title {
+    font-size: 4rem;
+    color: #000;
+}
+
+h2.title {
+    font-size: 2.5rem;
+    color: #000;
+}
+
+/* ----margin---- */
+.mt-divider {
+    margin-top: 100px;
+}
+
+.mb-divider {
+    margin-bottom: 100px;
+}
+
+.ms-divider {
+    margin-left: 100px;
+}
+
+.me-divider {
+    margin-right: 100px;
+}
