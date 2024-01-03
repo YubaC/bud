@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload your X-ray image</title>
+
+    <!-- Bootstrap5 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./css/utils.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/note-paper.css">
+</head>
+
+<body>
+    <!-- <style>
+        main {
+            padding-top: 60px;
+        }
+
+        .base-plate {
+            position: relative;
+            background: linear-gradient(45deg, #7d361a, #9d461a);
+            border: 10px solid #472213;
+            box-shadow: 10px 10px 5px #888888;
+            border-radius: 20px;
+            padding: 15mm 18mm 15mm 15mm;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            z-index: 1;
+        }
+
+        .base-plate::before {
+            content: "";
+            position: absolute;
+            top: -15mm;
+            left: 50%;
+            transform: translateX(-50%);
+            aspect-ratio: 308 / 184;
+            width: 75mm;
+            background-image: url("./images/clip.svg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: 2;
+        }
+
+        .a4-paper {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 25.4mm 31.8mm;
+        }
+
+        .single-sticky-note {
+            position: absolute;
+            bottom: 35px;
+            right: 40px;
+            width: 300px;
+            /* 旋转30° */
+            transform: rotate(-5deg);
+            /* width: 50%;
+                        height: 50%; */
+            z-index: 30;
+        }
+
+        .single-sticky-note .ribbon {
+            transform: rotate(-30deg);
+        }
+    </style> -->
+
+    <style>
+        main {
+            margin-top: 0;
+            padding-top: 80px;
+        }
+
+        .login-container {
+            width: 340px;
+            min-height: 480px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            /* position: absolute;
+            left: 50%;
+            top: 200px;
+            transform: translateX(-50%); */
+            margin-left: auto;
+            margin-right: auto;
+            /* z-index: 30; */
+        }
+
+        .paper-without-folding,
+        .single-sticky-note2 {
+            min-height: 430px;
+            padding: 1.5rem;
+        }
+
+        .single-sticky-note {
+            transform: rotate(180deg);
+        }
+
+        /* .single-sticky-note .ribbon {
+            transform: rotate(90deg);
+        } */
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+                Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: var(--body-font-size, 14px);
+            line-height: 1.5;
+        }
+
+        /* .account-form {
+            max-width: 340px;
+            margin: 0 auto;
+            padding: 10px;
+        } */
+
+        .account-form img {
+            aspect-ratio: 1/1;
+            width: 9em;
+            padding: 25px;
+            overflow: visible;
+        }
+
+        .account-form-header h1 {
+            font-size: 24px;
+            font-weight: var(--base-text-weight-light, 300);
+            letter-spacing: -0.5px;
+        }
+
+        .account-form-body,
+        .third-party-login-container {
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .account-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .input-block {
+            display: block;
+            width: 100%;
+            margin-top: 4px;
+            /* margin-bottom: 16px; */
+        }
+
+        .form-link {
+            color: #0969da;
+            text-decoration: none;
+        }
+
+        .form-link:hover {
+            color: #0a58ca;
+            text-decoration: underline;
+        }
+
+        .label-link {
+            font-size: 12px;
+        }
+
+        .wall {
+            width: 100%;
+            height: 200px;
+            background-image: url("./images/wall01.png");
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+            /* 透明度 */
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .third-party-login-container button {
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .third-party-login-container button:hover {
+            background-color: #e1e1e1;
+        }
+    </style>
+    <main>
+        <div class="row">
+            <div class="account-form login-container col-md-6 me-5">
+                <div class="paper-without-folding h-100">
+                    <div class="ribbon"></div>
+                    <div class="text-center mt-2">
+                        <img src="./images/bud-without-text.png" alt="BUD Logo">
+                    </div>
+                    <div class="account-form-header text-center">
+                        <h1>
+                            Sign in to BUD
+                        </h1>
+                    </div>
+
+                    <form id="sign-in-form">
+                        <div class="account-form-body">
+                            <div class="form-group position-relative mb-3">
+                                <label for="login-username">
+                                    Username or email address
+                                </label>
+                                <input type="text" id="login-username" class="form-control input-block"
+                                    autocapitalize="none" autocorrect="off" autocomplete="username"
+                                    autofocus="autofocus" required>
+                            </div>
+
+                            <div class="form-group position-relative mb-3">
+                                <label for="login-password">
+                                    Password
+                                </label>
+                                <input type="password" id="login-password" class="form-control input-block"
+                                    autocapitalize="none" autocorrect="off" autocomplete="username"
+                                    autofocus="autofocus" required>
+                                <a class="form-link label-link position-absolute top-0 end-0" id="forgot-password"
+                                    tabindex="0" href="/password_reset">Forgot password?</a>
+                            </div>
+
+                            <input type="submit" value="Sign in" id="login-submit" class="btn btn-success w-100">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="account-form login-container col-md-6 ms-5">
+                <div class="single-sticky-note2 position-relative h-100">
+                    <div class="ribbon"></div>
+                    <div class="text-center mt-4">
+                        <!-- <img src="./images/bud-without-text.png" alt="BUD Logo"> -->
+                    </div>
+                    <div class="account-form-header text-center">
+                        <h1>
+                            Sign in with third-party account
+                        </h1>
+                    </div>
+
+                    <div class="third-party-login-container">
+                        <button class="btn d-flex align-items-center rounded-pill border border-1 w-100 mb-2">
+                            <svg class="me-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                height="24" width="24">
+                                <path fill="currentColor"
+                                    d="M14.934 4.205c.69-.863 1.158-2.021 1.034-3.205-1.01.05-2.242.666-2.955 1.53-.641.74-1.208 1.946-1.06 3.08 1.133.099 2.266-.566 2.98-1.405zM15.955 5.832c-1.646-.098-3.046.934-3.832.934s-1.99-.885-3.292-.86c-1.695.024-3.267.982-4.127 2.506-1.77 3.049-.467 7.571 1.253 10.054.835 1.229 1.842 2.581 3.168 2.533 1.254-.05 1.745-.812 3.268-.812 1.523 0 1.965.812 3.292.787 1.376-.024 2.236-1.229 3.071-2.459.959-1.4 1.35-2.752 1.376-2.826-.025-.025-2.653-1.033-2.678-4.056-.025-2.532 2.064-3.736 2.162-3.81-1.18-1.745-3.022-1.942-3.66-1.991z">
+                                </path>
+                            </svg>
+                            Continue with Apple
+                        </button>
+                        <button class="btn d-flex align-items-center rounded-pill border border-1 w-100 mb-2">
+                            <svg class="me-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                height="24" width="24">
+                                <path fill="#4285F4"
+                                    d="M20.822 12.207c0-.612-.05-1.227-.155-1.829h-8.49v3.466h4.862a4.166 4.166 0 01-1.8 2.735v2.248h2.901c1.703-1.567 2.682-3.882 2.682-6.62z">
+                                </path>
+                                <path fill="#34A853"
+                                    d="M12.178 21c2.427 0 4.474-.797 5.965-2.173l-2.9-2.248c-.807.549-1.848.86-3.062.86-2.348 0-4.339-1.584-5.053-3.714H4.135v2.318A9 9 0 0012.178 21z">
+                                </path>
+                                <path fill="#FBBC04"
+                                    d="M7.125 13.725a5.39 5.39 0 010-3.446V7.961h-2.99a9.007 9.007 0 000 8.082l2.99-2.318z">
+                                </path>
+                                <path fill="#EA4335"
+                                    d="M12.178 6.562a4.89 4.89 0 013.452 1.35l2.57-2.57A8.65 8.65 0 0012.178 3a8.998 8.998 0 00-8.043 4.96l2.99 2.318c.71-2.133 2.705-3.717 5.053-3.717z">
+                                </path>
+                            </svg>
+                            Continue with Google
+                        </button>
+                        <button class="btn d-flex align-items-center rounded-pill border border-1 w-100 mb-2">
+                            <svg class="me-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                height="24" width="24">
+                                <path fill="#1877F2"
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z">
+                                </path>
+                                <path fill="#fff"
+                                    d="M15.893 14.89l.443-2.89h-2.773v-1.876c0-.79.387-1.562 1.63-1.562h1.26v-2.46s-1.144-.196-2.238-.196c-2.285 0-3.777 1.385-3.777 3.89V12h-2.54v2.89h2.54v6.988a10.072 10.072 0 003.124 0v-6.987h2.33z">
+                                </path>
+                            </svg>
+                            Continue with Facebook
+                        </button>
+                        <button class="btn d-flex align-items-center rounded-pill border border-1 w-100 mb-2">
+                            <svg class="me-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                height="24" width="24">
+                                <path fill="#fff"
+                                    d="M17.322 13.514c-.228-2.273-3.25-3.84-6.75-3.497-3.501.343-6.156 2.464-5.929 4.738.228 2.275 3.25 3.841 6.75 3.5 3.502-.343 6.156-2.465 5.929-4.74z"
+                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                <path fill="#CD201F"
+                                    d="M18.396 10.703c-.298-.088-.502-.148-.346-.536.338-.84.373-1.566.006-2.083-.686-.971-2.564-.919-4.717-.026 0-.002-.676.292-.504-.238.332-1.054.282-1.937-.234-2.446-1.168-1.157-4.274.043-6.938 2.679C3.668 10.027 2.51 12.12 2.51 13.93c0 3.46 4.485 5.565 8.872 5.565 5.751 0 9.577-3.307 9.577-5.933 0-1.586-1.35-2.487-2.563-2.859zm-7.002 7.551c-3.501.342-6.523-1.224-6.75-3.499-.228-2.274 2.427-4.395 5.927-4.738 3.502-.343 6.523 1.224 6.75 3.498.228 2.275-2.426 4.397-5.927 4.74z"
+                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                <path fill="#232323"
+                                    d="M11.702 11.702c-1.667-.426-3.55.39-4.275 1.83-.737 1.47-.024 3.102 1.66 3.636 1.744.551 3.8-.295 4.515-1.88.705-1.552-.175-3.149-1.9-3.586zm-1.273 3.754c-.339.53-1.064.762-1.61.517-.54-.24-.698-.856-.36-1.373.335-.515 1.036-.745 1.579-.522.549.23.724.842.391 1.378zm1.116-1.406a.51.51 0 01-.605.218c-.209-.084-.274-.313-.156-.516.122-.2.383-.299.59-.218.212.076.288.309.171.516z"
+                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                <path fill="#DD880C"
+                                    d="M21.989 4.386c-1.358-1.57-3.361-2.168-5.21-1.758-.429.096-.701.534-.61.98.091.445.512.73.94.634a3.797 3.797 0 013.704 1.25c.965 1.115 1.227 2.636.814 3.969-.135.434.093.899.51 1.039a.785.785 0 00.997-.53v-.003c.58-1.875.213-4.013-1.145-5.58zm-4.623 1.107c-.369.082-.603.46-.524.844.079.382.44.628.808.545.44-.097.918.045 1.24.418a1.4 1.4 0 01.273 1.33.718.718 0 00.439.895.677.677 0 00.858-.458 2.863 2.863 0 00-.556-2.72 2.6 2.6 0 00-2.538-.854z"
+                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                            </svg>
+                            Continue with Weibo
+                        </button>
+                    </div>
+
+                    <p class="account-form-body bg-transparent text-center mt-3">New to BUD? <a href="/signup">Create an
+                            account.</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="single-sticky-note">
+            <img src="./images/little-magazine.png" class="w-100 h-100" alt="" aria-hidden="true">
+            <div class="ribbon"></div>
+        </div> -->
+        <div class="wall fixed-bottom"></div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
