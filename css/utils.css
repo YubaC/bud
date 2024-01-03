@@ -7,31 +7,31 @@
 }
 
 .bg-lightgreen {
-    background-color: var(--bg-lightgreen);
+    background-color: var(--bg-lightgreen) !important;
 }
 
 .bg-darkgreen {
-    background-color: var(--bg-darkgreen);
+    background-color: var(--bg-darkgreen) !important;
 }
 
 .bg-lightyellow {
-    background-color: var(--bg-lightyellow);
+    background-color: var(--bg-lightyellow) !important;
 }
 
 .bg-darkyellow {
-    background-color: var(--bg-darkyellow);
+    background-color: var(--bg-darkyellow) !important;
 }
 
 .bg-transparent {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .text-lightyellow {
-    color: var(--bg-lightyellow);
+    color: var(--bg-lightyellow) !important;
 }
 
 .text-darkgreen {
-    color: var(--bg-darkgreen);
+    color: var(--bg-darkgreen) !important;
 }
 
 /* ====fonts==== */
