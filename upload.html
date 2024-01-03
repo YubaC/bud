@@ -39,14 +39,14 @@
     </header>
 
     <style>
+        main {
+            padding-top: 60px;
+        }
+
         .base-plate {
             position: relative;
             background: linear-gradient(45deg, #7d361a, #9d461a);
-            /* border: 10px solid;
-            border-image: linear-gradient(45deg, #472213, #673213) 1; */
-            /* background: #7d361a; */
             border: 10px solid #472213;
-            /* 阴影向右下打 */
             box-shadow: 10px 10px 5px #888888;
             border-radius: 20px;
             padding: 15mm 18mm 15mm 15mm;
@@ -76,6 +76,22 @@
             height: 297mm;
             margin: 0 auto;
             padding: 25.4mm 31.8mm;
+        }
+
+        .single-sticky-note {
+            position: absolute;
+            bottom: 35px;
+            right: 40px;
+            width: 300px;
+            /* 旋转30° */
+            transform: rotate(-5deg);
+            /* width: 50%;
+                        height: 50%; */
+            z-index: 30;
+        }
+
+        .single-sticky-note .ribbon {
+            transform: rotate(-30deg);
         }
     </style>
     <main>
@@ -117,23 +133,6 @@
                     <img src="./images/little-magazine.png" class="w-100 h-100" alt="" aria-hidden="true">
                     <div class="ribbon"></div>
                 </div>
-                <style>
-                    .single-sticky-note {
-                        position: absolute;
-                        bottom: 35px;
-                        right: 40px;
-                        width: 300px;
-                        /* 旋转30° */
-                        transform: rotate(-5deg);
-                        /* width: 50%;
-                        height: 50%; */
-                        z-index: 30;
-                    }
-
-                    .single-sticky-note .ribbon {
-                        transform: rotate(-30deg);
-                    }
-                </style>
             </div>
         </div>
     </main>
