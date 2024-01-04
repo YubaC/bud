@@ -19,6 +19,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm border-bottom fixed-top">
+            <a href="#main-content" class="skip-to-main-content btn btn-danger">
+                Skip to main content
+            </a>
+
             <a class="navbar-brand ms-3" href="/"><img src="./images/icon.png" alt="BUD Logo"></a>
             <!-- Links -->
             <ul class="navbar-nav d-flex me-auto">
@@ -74,7 +78,8 @@
             /* background-color: #000; */
         }
 
-        .archive-card:hover {
+        .archive-card:hover,
+        .archive-card:focus {
             transform: scale(1.04);
             /* 动画时间 */
             transition: 0.3s;
@@ -125,7 +130,7 @@
         }
     </style>
 
-    <main>
+    <main id="main-content">
         <div class="user-info container pb-3 mb-3">
             <div class="row">
                 <div class="col-2">
@@ -148,15 +153,15 @@
         </div>
 
         <div class="archives row">
-            <div class="archive-card card col-md-3 shadow-lg">
+            <a href="/" class="archive-card card col-md-3 shadow-lg">
                 <img src="./images/happy-kid.png" alt="" class="w-100">
                 <div class="name">A happy kid.</div>
-            </div>
-            <div class="archive-card card col-md-3 shadow-lg">
+            </a>
+            <a href="/" class="archive-card card col-md-3 shadow-lg">
                 <img src="./images/happy-kid.png" alt="" class="w-100">
                 <div class="name">A happy kid.</div>
-            </div>
-            <div class="archive-card card col-md-3 empty"></div>
+            </a>
+            <a href="/" class="archive-card card col-md-3 empty"></a>
         </div>
 
         <div class="wall fixed-bottom"></div>
