@@ -565,3 +565,35 @@
     -o-transform: rotate(7deg) translate(20px, 25px) skew(20deg);
     transform: rotate(7deg) translate(20px, 25px) skew(20deg);
 }
+
+/* reversed paper tool */
+/* .paper-x-reversed {
+    transform: scaleX(-1);
+}
+.paper-x-reversed::before {
+    transform: scaleX(-1);
+}
+
+.paper-x-reversed::after {
+    transform: scaleX(-1);
+}
+
+.paper-x-reversed > * {
+    transform: scaleX(-1);
+}
+
+.paper-y-reversed {
+    transform: scaleY(-1);
+}
+
+.paper-y-reversed::before {
+    transform: scaleY(-1);
+}
+
+.paper-y-reversed::after {
+    transform: scaleY(-1);
+}
+
+.paper-y-reversed > * {
+    transform: scaleY(-1);
+} */

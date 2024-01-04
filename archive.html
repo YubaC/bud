@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="./css/utils.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/note-paper.css">
+    <link rel="stylesheet" href="./css/board-clips.css">
+    <link rel="stylesheet" href="./css/archive-card.css">
     <!-- <link rel="stylesheet" href="./css/index.css"> -->
 
     <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
@@ -56,7 +58,7 @@
 
     <style>
         .layout-sidebar {
-            max-width: 360px;
+            max-width: 330px;
             /* height: 100vh; */
             /* background-color: #f8f9fa; */
             /* position: fixed; */
@@ -66,12 +68,15 @@
 
         .kid-avatar img {
             aspect-ratio: 1/1;
-            width: 100%;
+            width: 85%;
+            margin-top: 20px;
+            margin-right: auto;
+            margin-left: auto;
             /* height: 100%; */
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid #ced4da;
+            /* border: 2px solid #ced4da; */
             border-radius: 50%;
         }
 
@@ -87,27 +92,212 @@
 
         .layout-main {
             /* background-color: transparent; */
-            height: 100vh;
+            /* height: 100vh; */
             width: 100%;
             background-color: transparent;
+        }
+
+        .base-plate {
+            /* width: calc(100vw - 600px); */
+            margin-top: 40px;
+        }
+
+        .a4-paper {
+            width: calc(100vw - 650px);
+            height: auto;
+            padding: 9.4% 15%;
+        }
+
+        .paper-nav {
+            position: absolute;
+            top: 70px;
+            left: calc(100% - 75px);
+            /* left: 100%; */
+            /* z-index: 10; */
+        }
+
+        .paper-nav-item {
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            width: 150px;
+            padding: 10px 15px 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            transition: all 300ms;
+            will-change: padding-right;
+        }
+
+        .paper-nav-item.active {
+            width: 170px;
+            padding-left: 40px;
+        }
+
+        .paper-nav-item:hover {
+            color: #000;
+            /* 滤镜 */
+            filter: brightness(0.9);
+        }
+
+        :root {
+            --paper-nav-bg-1: #d1e7dd;
+            --paper-nav-border-1: #badbcc;
+            --paper-nav-bg-2: #cff4fc;
+            --paper-nav-border-2: #b6effb;
+            --paper-nav-bg-3: #fff3cd;
+            --paper-nav-border-3: #ffecb5;
+            --paper-nav-bg-4: #f8d7da;
+            --paper-nav-border-4: #f5c2c7;
+            --paper-nav-bg-5: #cfe2ff;
+            --paper-nav-border-5: #b6d4fe;
+        }
+
+        .paper-nav-item:nth-child(5n+1) {
+            background-color: var(--paper-nav-bg-1);
+            border: 1px solid var(--paper-nav-border-1);
+        }
+
+        .paper-nav-item:nth-child(5n+2) {
+            background-color: var(--paper-nav-bg-2);
+            border: 1px solid var(--paper-nav-border-2);
+        }
+
+        .paper-nav-item:nth-child(5n+3) {
+            background-color: var(--paper-nav-bg-3);
+            border: 1px solid var(--paper-nav-border-3);
+        }
+
+        .paper-nav-item:nth-child(5n+4) {
+            background-color: var(--paper-nav-bg-4);
+            border: 1px solid var(--paper-nav-border-4);
+        }
+
+        .paper-nav-item:nth-child(5n) {
+            background-color: var(--paper-nav-bg-5);
+            border: 1px solid var(--paper-nav-border-5);
+        }
+
+        /* .a4-paper {
+            width: 100%;
+            height: auto;0
+        } */
+        .archive-card {
+            width: 41.666667%;
+            margin-top: 20px;
+            margin-right: auto;
         }
     </style>
 
     <main id="main-content" class="container-fluid d-flex">
         <div class="layout-sidebar p-4">
-            <div class="kid-avatar">
-                <img src="./images/happy-kid.png" alt="A happy kid.">
-            </div>
-            <div class="kid-info">
-                <div class="ms-2">
-                    <h3 class="mt-4">A happy kid</h3>
-                    <p class="mt-4"><i class="fa fa-map-marker-alt me-2" aria-hidden="true"></i>The Foggy City</p>
-                    <p><i class="fas fa-birthday-cake me-2" aria-hidden="true"></i>Age: 6</p>
+            <div class="single-sticky-note position-relative p-2">
+                <div class="ribbon"></div>
+                <div class="kid-avatar">
+                    <img src="./images/happy-kid.png" alt="A happy kid.">
                 </div>
-                <div id="kid-chart" class="mt-4"></div>
+                <div class="kid-info">
+                    <div class="ms-2 p-4">
+                        <h3 class="mt-4">A happy kid</h3>
+                        <p class="mt-4"><i class="fa fa-map-marker-alt me-2" aria-hidden="true"></i>The Foggy City</p>
+                        <p><i class="fas fa-birthday-cake me-2" aria-hidden="true"></i>Age: 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div id="kid-chart" class="mt-4"></div> -->
+        </div>
+        <div class="layout-main me-4">
+            <div class="base-plate">
+                <nav class="paper-nav nav flex-column">
+                    <a href="#paper-insights" class="paper-nav-item active" data-bs-toggle="tab">
+                        <i class="fas fa-chart-bar fa-fw me-2" aria-hidden="true"></i>
+                        <span>Insights</span>
+                    </a>
+                    <a href="#paper-history" class="paper-nav-item" data-bs-toggle="tab">
+                        <i class="fas fa-history fa-fw me-2" aria-hidden="true"></i>
+                        <span>History</span>
+                    </a>
+                    <!-- <a href="#paper-insights" class="paper-nav-item" data-bs-toggle="tab">
+                        <i class="fas fa-home me-2"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#paper-insights" class="paper-nav-item" data-bs-toggle="tab">
+                        <i class="fas fa-home me-2"></i>
+                        <span>Home</span>
+                    </a> -->
+                    <a href="#paper-settings" class="paper-nav-item" data-bs-toggle="tab">
+                        <i class="fas fa-cog fa-fw me-2" aria-hidden="true"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+                <div class="a4-paper sticky-note">
+                    <div class="tab-content mt-5">
+                        <div id="paper-insights" class="tab-pane fade active show w-100">
+                            <!-- <h3 class="text-center">Insights</h3> -->
+
+                            <div id="kid-chart" class="mt-4"></div>
+
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.</p> -->
+                        </div>
+
+                        <div id="paper-history" class="tab-pane fade d-flex w-100">
+                            <div class="row mx-auto w-100">
+                                <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                    <img src="./images/happy-kid.png" alt="" class="w-100">
+                                    <div class="name">A happy kid.</div>
+                                </a>
+                                <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                    <img src="./images/happy-kid.png" alt="" class="w-100">
+                                    <div class="name">A happy kid.</div>
+                                </a>
+                                <a href="/" class="archive-card card col-md-5 empty"></a>
+                                <div class="col-md-5 mx-auto"></div>
+                            </div>
+                        </div>
+
+                        <div id="paper-settings" class="tab-pane fade w-100">
+                            <h3 class="text-center">Settings</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem aperiam.</p>
+                        </div>
+                    </div>
+                    <!-- <h1 class="text-center">Upload your X-ray image</h1>
+                    <h2 class="mt-4">Instructions</h2>
+                    <p class="mt-4">Thank you for choosing our service！</p>
+                    <p class="mt-4">
+                        <strong>We need you to:</strong>
+                    <ul>
+                        <li>Upload a front view X-ray of your child's hand.</li>
+                        <li>Fill in the age of your child.</li>
+                    </ul>
+                    </p>
+                    <p class="mt-4">This is for us to conduct a bone age assessment.</p>
+
+                    <p>Thank you again for your cooperation!</p>
+
+                    <p class="text-end">BUD Team</p>
+
+                    <form class="w-75 mx-auto">
+                        <div class="mb-3">
+                            <label for="imageUpload" class="form-label">X-ray Image</label>
+                            <div class="input-group">
+                                <input type="file" class="form-control" id="imageUpload" accept="image/*" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Age</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="age" min="0" max="18" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mt-4">Submit</button>
+                    </form> -->
+                </div>
             </div>
         </div>
-        <div class="layout-main card ms-3 me-4"></div>
     </main>
 
     <footer></footer>
@@ -161,7 +351,6 @@
                 // showInLegend: false // 不在图例中显示
             }
         ];
-
         var json = {};
 
         json.title = title;
