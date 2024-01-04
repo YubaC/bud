@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Bone Age Evaluation</title>
+
+    <!-- Bootstrap5 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FontAwesome5 -->
+    <link rel="stylesheet" href="./lib/fontawesome-free-5.15.4-web/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/utils.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/note-paper.css">
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm border-bottom fixed-top">
+            <a href="#main-content" class="skip-to-main-content btn btn-danger">
+                Skip to main content
+            </a>
+
+            <a class="navbar-brand ms-3" href="/"><img src="./images/icon.png" alt="BUD Logo"></a>
+            <!-- Links -->
+            <ul class="navbar-nav d-flex me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Introduce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload.html">Upload</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex align-items-center">
+                <li class="nav-item mx-1">
+                    <a class="btn rounded-pill px-4" href="#">Sign up</a>
+                </li>
+                <li class="nav-item ms-1 me-4">
+                    <a class="btn btn-outline-success rounded-pill px-4" href="login.html">Sign in</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <style>
+        .layout-sidebar {
+            max-width: 360px;
+            /* height: 100vh; */
+            /* background-color: #f8f9fa; */
+            /* position: fixed; */
+            /* top: 0; */
+            /* left: 0; */
+        }
+
+        .kid-avatar img {
+            aspect-ratio: 1/1;
+            width: 100%;
+            /* height: 100%; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ced4da;
+            border-radius: 50%;
+        }
+
+        .kid-info {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 300;
+        }
+
+        .kid-info p {
+            font-size: 1.2rem;
+            margin-bottom: .4rem;
+        }
+
+        .layout-main {
+            /* background-color: transparent; */
+            height: 100vh;
+            width: 100%;
+            background-color: transparent;
+        }
+    </style>
+
+    <main id="main-content" class="container-fluid d-flex">
+        <div class="layout-sidebar p-4">
+            <div class="kid-avatar">
+                <img src="./images/happy-kid.png" alt="A happy kid.">
+            </div>
+            <div class="kid-info">
+                <div class="ms-2">
+                    <h3 class="mt-4">A happy kid</h3>
+                    <p class="mt-4"><i class="fa fa-map-marker-alt me-2" aria-hidden="true"></i>The Foggy City</p>
+                    <p><i class="fas fa-birthday-cake me-2" aria-hidden="true"></i>Age: 6</p>
+                </div>
+                <div id="kid-chart" class="mt-4"></div>
+            </div>
+        </div>
+        <div class="layout-main card ms-3 me-4"></div>
+    </main>
+
+    <footer></footer>
+</body>
+<script language="JavaScript">
+    $(document).ready(function () {
+        // var title = {
+        //     text: '月平均气温'
+        // };
+        var title = null;
+        // var subtitle = {
+        //     text: 'Source: runoob.com'
+        // };
+        var xAxis = {
+            categories: ['一月', '二月', '三月', '四月', '五月', '六月'
+                , '七月', '八月', '九月', '十月', '十一月', '十二月']
+        };
+        var yAxis = {
+            // title: {
+            //     text: 'Temperature (\xB0C)'
+            // },
+            title: null,
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        };
+
+        var tooltip = {
+            valueSuffix: '\xB0C'
+        }
+
+        var legend = {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom',
+            borderWidth: 0
+        };
+        var series = [
+            {
+                name: '已存在的数据',
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5], // 已存在的数据
+                color: '#7cb5ec' // 已存在的数据的颜色
+            },
+            {
+                name: '预测的数据',
+                data: [25.2, 26.5, 23.3, 18.3, 13.9, 9.6], // 预测的数据
+                color: '#f7a35c', // 预测的数据的颜色
+                // linkedTo: ':previous', // 链接到前一个系列
+                // showInLegend: false // 不在图例中显示
+            }
+        ];
+
+        var json = {};
+
+        json.title = title;
+        // json.subtitle = subtitle;
+        json.xAxis = xAxis;
+        json.yAxis = yAxis;
+        json.tooltip = tooltip;
+        json.legend = legend;
+        json.series = series;
+        json.credits = { enabled: false };
+        json.chart = {
+            backgroundColor: 'transparent', // 设置图表的背景颜色为透明
+            height: 300,
+        };
+
+        $('#kid-chart').highcharts(json);
+    });
+</script>
+
+</html>
