@@ -134,6 +134,14 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        .paper-nav-left .paper-nav-item.paper-nav-item.moving {
+            transition: all 300ms ease-in-out;
+        }
+
+        .paper-nav-item.moveout {
+            transform: translateX(200px);
+        }
+
         .paper-nav-item.disabled {
             color: #6c757d;
             background-color: #fff;
@@ -153,7 +161,7 @@
 
         .paper-nav-left .paper-nav-item {
             padding: 10px 40px 10px 15px;
-            transition: all 150ms;
+            transition: transform 150ms;
         }
 
         .paper-nav-right .paper-nav-item {
@@ -272,6 +280,19 @@
                     <button id="paper-next" class="paper-nav-item text-start">
                         <span>Next</span>
                         <i class="fas fa-angle-right fa-fw ms-2" aria-hidden="true"></i>
+                    </button>
+                    <button class="paper-nav-item text-start">
+                        <i class="fas fa-download fa-fw me-2" aria-hidden="true"></i>
+                        <span>Save</span>
+                    </button>
+                    <button class="paper-nav-item text-start"
+                        onclick="setTimeout(function () { window.print(); }, 500);">
+                        <i class="fas fa-print fa-fw me-2" aria-hidden="true"></i>
+                        <span>Print</span>
+                    </button>
+                    <button class="paper-nav-item text-start">
+                        <i class="fas fa-mail-bulk fa-fw me-2" aria-hidden="true"></i>
+                        <span>Email</span>
                     </button>
                 </nav>
                 <style>
@@ -422,18 +443,113 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                 </nav>
 
                 <script>
+                    // $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
+                    //     // e.target 是刚刚被激活的 tab
+                    //     // e.relatedTarget 是之前被激活的 tab
+                    //     show();
+                    // })
+
+                    // $('a[data-bs-toggle="tab"]:not([href="#paper-report"])').on('shown.bs.tab', function (e) {
+                    //     // e.target 是刚刚被激活的 tab
+                    //     // e.relatedTarget 是之前被激活的 tab
+                    //     hide();
+                    // })
+                    var btnHided = false;
+
+                    $('a[data-bs-toggle="tab"]:not([href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                        show();
+                    });
 
                     $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
-                        // e.target 是刚刚被激活的 tab
-                        // e.relatedTarget 是之前被激活的 tab
-                        show();
-                    })
+                        if (!btnHided) {
+                            return;
+                        }
+                        showbtn();
+                        btnHided = false;
+                    });
 
-                    $('a[data-bs-toggle="tab"]:not([href="#paper-report"])').on('shown.bs.tab', function (e) {
-                        // e.target 是刚刚被激活的 tab
-                        // e.relatedTarget 是之前被激活的 tab
+                    $('a[data-bs-toggle="tab"]:not([href="#paper-report"]):not(a[href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                        if (btnHided) {
+                            return;
+                        }
+                        hidebtn();
+                        btnHided = true;
+                    });
+
+                    $('a[href="#paper-settings"]').on('shown.bs.tab', function (e) {
                         hide();
-                    })
+                    });
+
+                    // function hidebtn() {
+                    //     $("#paper-previous, #paper-jumpto, #paper-next").addClass("hidden");
+                    // }
+
+                    function hidebtn() {
+                        // 首先，我们添加 'move' 类来开始移动动画
+                        $("#paper-previous, #paper-jumpto, #paper-next").addClass("moveout");
+
+                        // 然后，我们监听 'transitionend' 事件，当移动动画结束后，我们添加 'hidden' 类来开始隐藏动画
+                        $("#paper-previous.moveout, #paper-jumpto.moveout, #paper-next.moveout").one('transitionend', function () {
+                            // console.log("transitionend");
+                            // $(this).addClass("hidden");
+                            // 遍历每个元素，计算他们的高度，存储到data-height属性中，然后设置高度为0，时间600ms
+                            $(this).each(function () {
+                                // $(this).addClass("hidden");
+                                $(this).attr("data-animate-height", $(this).outerHeight());
+                                $(this).attr("data-animate-margin-top", $(this).css("margin-top"));
+                                $(this).attr("data-animate-margin-bottom", $(this).css("margin-bottom"));
+                                $(this).attr("data-animate-padding-top", $(this).css("padding-top"));
+                                $(this).attr("data-animate-padding-bottom", $(this).css("padding-bottom"));
+                            });
+
+                            $(this).animate({
+                                height: 0,
+                                "margin-top": 0,
+                                "margin-bottom": 0,
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                            }, {
+                                duration: 300,
+                                easing: "swing",
+                            }).promise().done(function () {
+                                $(this).hide();
+                            });
+                        });
+                    }
+
+                    function showbtn() {
+                        // // 我们移除 'hidden' 和 'move' 类，这将恢复元素的原始状态，并触发反向的过渡动画
+                        // $("#paper-previous, #paper-jumpto, #paper-next").removeClass("hidden");
+                        // $("#paper-previous, #paper-jumpto, #paper-next").one('transitionend', function () {
+                        //     console.log("transitionend");
+                        //     $(this).removeClass("moveout");
+                        // });
+
+                        $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
+                            $(this).show().animate({
+                                height: $(this).attr("data-animate-height"),
+                                "margin-top": $(this).attr("data-animate-margin-top"),
+                                "margin-bottom": $(this).attr("data-animate-margin-bottom"),
+                                "padding-top": $(this).attr("data-animate-padding-top"),
+                                "padding-bottom": $(this).attr("data-animate-padding-bottom"),
+                            }, {
+                                duration: 300,
+                                easing: "swing",
+                            });
+                        }).promise().done(function () {
+                            $("#paper-previous, #paper-jumpto, #paper-next").removeClass("moveout");
+                            // 移除内联样式
+                            $("#paper-previous, #paper-jumpto, #paper-next").removeAttr("style");
+                            // 移除data-animate开头的属性
+                            $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
+                                $(this).removeAttr("data-animate-height");
+                                $(this).removeAttr("data-animate-margin-top");
+                                $(this).removeAttr("data-animate-margin-bottom");
+                                $(this).removeAttr("data-animate-padding-top");
+                                $(this).removeAttr("data-animate-padding-bottom");
+                            });
+                        });
+                    }
                 </script>
                 <div class="a4-paper sticky-note">
                     <div class="tab-content mt-5">
