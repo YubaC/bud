@@ -113,9 +113,15 @@
         .paper-nav {
             position: absolute;
             top: 70px;
+            transition: all 300ms;
+        }
+
+        .paper-nav-left {
+            left: -90px;
+        }
+
+        .paper-nav-right {
             left: calc(100% - 95px);
-            /* left: 100%; */
-            /* z-index: 10; */
         }
 
         .paper-nav-item {
@@ -123,37 +129,64 @@
             font-weight: 600;
             text-decoration: none;
             width: 170px;
-            padding: 10px 15px 10px 40px;
             margin-bottom: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-            transition: all 300ms;
-            /* will-change: padding-right; */
         }
 
-        .paper-nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10px;
-            width: 10px;
-            height: 100%;
-            /* border: 1px solid rgb(183, 0, 0); */
-            /* border-radius: 5px 0 0 5px; */
-            background-color: rgb(183, 0, 0);
-        }
-
-        .paper-nav-item.active {
-            transform: translateX(20px);
-            /* width: 170px; */
-            /* padding-left: 40px; */
+        .paper-nav-item.disabled {
+            color: #6c757d;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
         }
 
         .paper-nav-item:hover {
             color: #000;
-            /* 滤镜 */
             filter: brightness(0.9);
+        }
+
+        .paper-nav-item.disabled:hover {
+            color: #6c757d;
+            filter: brightness(1);
+            cursor: not-allowed;
+        }
+
+        .paper-nav-left .paper-nav-item {
+            padding: 10px 40px 10px 15px;
+            transition: all 150ms;
+        }
+
+        .paper-nav-right .paper-nav-item {
+            padding: 10px 15px 10px 40px;
+            transition: all 300ms;
+        }
+
+        .paper-nav-left .paper-nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 10px;
+            width: 10px;
+            height: 100%;
+            background-color: rgb(183, 0, 0);
+        }
+
+        .paper-nav-right .paper-nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12px;
+            width: 10px;
+            height: 100%;
+            background-color: rgb(183, 0, 0);
+        }
+
+        .paper-nav-left .paper-nav-item.active {
+            transform: translateX(-20px);
+        }
+
+        .paper-nav-right .paper-nav-item.active {
+            transform: translateX(20px);
         }
 
         :root {
@@ -224,9 +257,144 @@
 
             <!-- <div id="kid-chart" class="mt-4"></div> -->
         </div>
+
         <div class="layout-main me-4">
             <div class="base-plate">
-                <nav class="paper-nav nav flex-column">
+                <nav class="paper-nav paper-nav-left nav flex-column">
+                    <button id="paper-previous" class="paper-nav-item text-start disabled">
+                        <i class="fas fa-angle-left fa-fw me-2" aria-hidden="true"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button id="paper-jumpto" class="paper-nav-item text-start">
+                        <span>Jump to page</span>
+                        <input type="number" class="form-control mt-1" id="age" min="0" max="18" required>
+                    </button>
+                    <button id="paper-next" class="paper-nav-item text-start">
+                        <span>Next</span>
+                        <i class="fas fa-angle-right fa-fw ms-2" aria-hidden="true"></i>
+                    </button>
+                </nav>
+                <style>
+                    .fade * {
+                        transition: opacity .15s linear;
+                    }
+                </style>
+
+                <script>
+                    var page = 1;
+                    $("button.paper-nav-item").click(function () {
+                        if ($(this).hasClass("disabled")) {
+                            return;
+                        }
+                        // $("button.paper-nav-item").removeClass("active");
+                        $(this).addClass("active");
+                        setTimeout(function () {
+                            $("button.paper-nav-item").removeClass("active");
+                        }, 150);
+                    });
+                    // 阻止文本框的点击事件冒泡
+                    $("button.paper-nav-item input").click(function (event) {
+                        event.stopPropagation();
+                    });
+                    $("#paper-previous").click(function () {
+                        if (page === 1) {
+                            $(this).addClass("disabled");
+                            return;
+                        } else if (page === 2) {
+                            $(this).addClass("disabled");
+                        }
+                        page--;
+                        $("#paper-next").removeClass("disabled");
+                        $("#paper-jumpto input").val(page);
+                        changePage();
+                    });
+
+                    $("#paper-next").click(function () {
+                        if (page === 5) {
+                            $(this).addClass("disabled");
+                            return;
+                        } else if (page === 4) {
+                            $(this).addClass("disabled");
+                        }
+                        page++;
+                        $("#paper-previous").removeClass("disabled");
+                        $("#paper-jumpto input").val(page);
+                        changePage();
+                    });
+
+                    $("#paper-jumpto").click(function () {
+                        newPage = Number($(this).find("input").val());
+                        if (newPage < 1 || newPage > 5 || newPage === page) {
+                            return;
+                        }
+                        page = newPage;
+                        if (page === 1) {
+                            $("#paper-previous").addClass("disabled");
+                            $("#paper-next").removeClass("disabled");
+                        } else if (page === 5) {
+                            $("#paper-next").addClass("disabled");
+                            $("#paper-previous").removeClass("disabled");
+                        } else {
+                            $("#paper-previous").removeClass("disabled");
+                            $("#paper-next").removeClass("disabled");
+                        }
+                        changePage();
+                    });
+
+                    const texts = [
+                        `[Page 1] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices tempus aliquam. Vestibulum vehicula massa ex, ut mattis sem volutpat nec. Donec malesuada volutpat molestie. Proin id velit arcu. Phasellus accumsan consectetur libero non vestibulum. Donec sollicitudin, lacus pulvinar pharetra molestie, quam sapien pretium sem, in sodales diam mi id odio. Sed tincidunt augue vel quam venenatis posuere. Nam sodales diam ornare maximus venenatis. Aliquam condimentum justo sit amet consequat malesuada. Nulla volutpat dui a arcu elementum hendrerit. Nunc egestas elementum ipsum, ut laoreet nibh condimentum id. Praesent nec dolor sagittis, consectetur sem in, pharetra leo. Vestibulum odio urna, luctus nec elit eu, rhoncus rutrum libero.
+
+Proin sit amet mi nec velit scelerisque rhoncus quis sit amet tortor. Maecenas sagittis tortor in feugiat pulvinar. Nullam id venenatis nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet velit eu sem rhoncus volutpat. Vestibulum condimentum erat vulputate semper aliquet. Morbi ullamcorper vel arcu eget consectetur. Fusce eget luctus velit.
+
+Aliquam quis aliquet enim. Sed at consequat sem, in venenatis diam. Morbi libero turpis, rutrum euismod mi ac, commodo pretium mauris. Mauris sit amet hendrerit mi, in ultricies arcu. Ut quis est lorem. Vivamus sit amet est lobortis, efficitur sapien vitae, facilisis mi. Sed ante augue, volutpat eu felis a, finibus auctor libero. `,
+                        `[Page 2] Quisque sed orci libero. Quisque tortor nunc, hendrerit at ante vel, vehicula rhoncus quam. Suspendisse ultricies vel leo rhoncus fermentum. Cras fringilla feugiat metus eu tristique. Curabitur faucibus leo vitae elit dapibus, et rhoncus lorem dictum. Nulla faucibus hendrerit ipsum in commodo. Pellentesque facilisis consectetur magna ac gravida. Fusce tristique mi sapien, vel pretium urna sollicitudin non. Cras sed ullamcorper est. Sed et diam ipsum. Nullam vestibulum vulputate tincidunt.
+
+Morbi laoreet lacinia tellus, id blandit ipsum porta eget. Ut tincidunt et mi sit amet porttitor. Nullam non felis nisl. Phasellus maximus est vel ornare faucibus. Proin id est ac nibh pharetra porttitor porttitor nec ipsum. Maecenas nunc libero, interdum ut ligula sed, pulvinar vestibulum risus. Quisque elit dui, suscipit vitae auctor vel, congue non sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean a risus dui. Vivamus sagittis orci vel justo commodo commodo. Donec gravida enim in mauris tempor, sit amet mollis augue dapibus. Donec blandit odio vitae lectus volutpat ullamcorper. Phasellus congue nec mauris eu semper. Morbi egestas euismod risus, ac mollis enim posuere et.
+
+Suspendisse iaculis facilisis molestie. Mauris in massa nec felis iaculis feugiat in vitae sem. Vivamus non dictum neque, quis aliquam risus. Ut lobortis quam et facilisis aliquam. Praesent tempus quis dui ac dapibus. Vestibulum dapibus sem velit, ornare facilisis augue posuere eleifend. Aliquam erat volutpat. Nulla sed suscipit sapien. In convallis pretium volutpat. Aenean vel iaculis risus. Etiam at nisl turpis. Pellentesque eu nisl eu arcu sodales ultricies non nec nisl. Fusce a tortor vel purus posuere hendrerit vitae et nibh. `,
+                        `[Page 3] Donec cursus justo ut interdum mattis. Praesent vestibulum velit vel tortor feugiat interdum. Integer id viverra orci. Suspendisse maximus gravida elit. Nam in nisi rutrum tortor porta viverra. Cras pharetra sagittis dui, vel tincidunt mi interdum nec. Pellentesque molestie nisl porta commodo efficitur. Morbi et nunc a elit ultricies aliquet a rhoncus dolor. Phasellus sit amet mi massa. Integer maximus enim id scelerisque sollicitudin.
+
+Phasellus mattis, leo quis egestas tempor, eros enim venenatis elit, sit amet maximus tellus massa egestas dolor. Nullam suscipit sapien vitae sem finibus tincidunt. Mauris at orci erat. Sed at finibus purus. Nam porta imperdiet magna, egestas auctor augue faucibus id. Ut eu ex laoreet, aliquet lorem in, tincidunt sapien. In et posuere nisi. Etiam porttitor turpis diam, sit amet suscipit nibh dignissim id. Vestibulum ultricies, erat vel lacinia malesuada, felis ante mattis lectus, sed aliquam sem sem ut turpis. Mauris vitae dolor condimentum, efficitur ipsum at, gravida est.
+
+Donec in nulla maximus, fermentum ex rutrum, accumsan eros. Vestibulum tincidunt dignissim libero, ac auctor libero dignissim vel. Suspendisse id lobortis urna, sed hendrerit turpis. Phasellus quis mattis lorem, quis blandit odio. Vivamus mauris mi, lacinia ac eros ac, maximus tincidunt enim. Praesent eu accumsan enim. Maecenas venenatis ante leo, vitae sodales metus porta eget. Pellentesque diam purus, semper eget pellentesque ac, elementum et urna. Phasellus elementum luctus tortor, a scelerisque est. `,
+                        `[Page 4] Suspendisse nec ipsum lacus. Nullam at cursus odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer porttitor metus non viverra rutrum. Vestibulum a dui ac turpis eleifend mollis. Mauris mattis mauris viverra tristique pharetra. Donec congue, ligula sit amet fermentum consequat, sem massa faucibus sem, in feugiat libero nisi non nibh. Ut neque orci, dapibus ac mi sed, maximus pulvinar nisl. Praesent posuere neque nec mauris volutpat lobortis. Nullam interdum orci sit amet fringilla vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce felis sapien, ultrices a sagittis nec, blandit sit amet nunc. In nec porta arcu. Cras cursus, ex in hendrerit pulvinar, sapien leo vestibulum felis, consequat tincidunt nisi lectus id velit.
+
+Nullam dui dolor, efficitur in felis sit amet, gravida feugiat urna. Suspendisse ultrices nisl ac neque sagittis vulputate. Nunc ut sollicitudin nisi, ac varius quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam purus eros, pulvinar at luctus et, dapibus at eros. Nulla commodo ex massa, euismod vulputate lorem tempor sit amet. Nam tincidunt in nisl sit amet vehicula.
+
+Nunc non porttitor elit, ut commodo nisi. Suspendisse erat urna, sagittis in purus vitae, ultrices tempus eros. Donec tincidunt orci a viverra posuere. Maecenas et ultrices ligula, eu tempor elit. Suspendisse porta tellus non ante sollicitudin, ac suscipit mi auctor. Quisque vel orci erat. Nullam eu viverra justo. In sit amet faucibus mi. Donec vestibulum, magna eu gravida gravida, elit diam mattis odio, nec convallis lorem lorem sit amet quam. `,
+                        `[Page 5] Aliquam posuere dui volutpat metus vehicula, aliquet tincidunt ex elementum. Mauris cursus nisl eget consequat egestas. Maecenas dictum auctor ultrices. Etiam quis eros varius nibh posuere accumsan. Integer consequat sem ac ipsum porta, nec cursus purus sollicitudin. Duis vel neque vehicula, condimentum tortor eu, ultricies orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec pulvinar ac lacus quis congue. Phasellus a nisi at massa placerat aliquam.
+
+Morbi quis interdum mauris, ut mollis libero. Proin ac condimentum leo. Nam at odio sit amet massa aliquet imperdiet. Pellentesque nunc erat, semper vel ex vel, porta convallis felis. Nam sed metus at lacus consequat ultricies. Ut vitae metus gravida quam rhoncus auctor a eget felis. Curabitur at urna a ante ullamcorper aliquet et sed ex. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus, commodo at facilisis quis, fermentum in lectus. Etiam vel euismod odio, dictum ullamcorper felis. Donec ut tempor lorem, vitae dapibus nibh. Vivamus ullamcorper auctor turpis sed dapibus. Phasellus et velit vel purus pulvinar dapibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus egestas facilisis ipsum in hendrerit. Donec eget pharetra felis, eu fermentum risus. Pellentesque lacinia ut velit nec suscipit. Aliquam erat volutpat. Aliquam sollicitudin fermentum pellentesque. Aliquam ultrices eros ligula, et aliquet ex auctor eleifend. Suspendisse molestie ligula sed tincidunt viverra. Donec tempus magna sem, non feugiat arcu vestibulum sed. Nam aliquam ut turpis eget pulvinar. `,
+                    ]
+
+                    function changePage() {
+                        $("#paper-report").find("div").css("opacity", 0);
+                        setTimeout(function () {
+                            // 把对应的文字按照换行符分割成数组，然后遍历数组，把每一行文字用p标签包裹起来
+                            const html = texts[page - 1]
+                                .split("\n")
+                                .filter(text => text.trim() !== "")
+                                .map(text => `<p>${text}</p>`).join("");
+                            $("#paper-report").find("div").html(html);
+                            $("#paper-report").find("div").css("opacity", 1);
+                        }, 150);
+                        // var myTabEl = document.querySelector('#paper-report p')
+                        // var tab = new bootstrap.Tab(myTabEl);
+                        // tab.hide();
+                    }
+
+                    function show() {
+                        $(".paper-nav-left").css("transform", "translateX(0px)");
+                    }
+                    function hide() {
+                        $(".paper-nav-left").css("transform", "translateX(200px)");
+                    }
+
+                    changePage();
+                </script>
+                <nav class="paper-nav paper-nav-right nav flex-column">
                     <a href="#paper-report" class="paper-nav-item active" data-bs-toggle="tab">
                         <i class="fas fa-clipboard-check fa-fw me-2" aria-hidden="true"></i>
                         <span>Report</span>
@@ -252,15 +420,31 @@
                         <span>Settings</span>
                     </a>
                 </nav>
+
+                <script>
+
+                    $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
+                        // e.target 是刚刚被激活的 tab
+                        // e.relatedTarget 是之前被激活的 tab
+                        show();
+                    })
+
+                    $('a[data-bs-toggle="tab"]:not([href="#paper-report"])').on('shown.bs.tab', function (e) {
+                        // e.target 是刚刚被激活的 tab
+                        // e.relatedTarget 是之前被激活的 tab
+                        hide();
+                    })
+                </script>
                 <div class="a4-paper sticky-note">
                     <div class="tab-content mt-5">
                         <div id="paper-report" class="tab-pane fade active show w-100">
                             <h2 class="text-center">Report</h2>
-                            <p>
+                            <!-- <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium asperiores earum
                                 sunt tempora officia voluptatum natus cumque quia neque laudantium incidunt aspernatur,
                                 possimus ipsa, molestias doloribus dicta pariatur placeat? Optio?
-                            </p>
+                            </p> -->
+                            <div></div>
                         </div>
                         <div id="paper-insights" class="tab-pane fade w-100">
                             <!-- <h3 class="text-center">Insights</h3> -->
