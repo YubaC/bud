@@ -132,14 +132,15 @@
             margin-bottom: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(0px);
         }
 
-        .paper-nav-left .paper-nav-item.paper-nav-item.moving {
+        /* .paper-nav-left .paper-nav-item.paper-nav-item.moving {
             transition: all 300ms ease-in-out;
-        }
+        } */
 
         .paper-nav-item.moveout {
-            transform: translateX(200px);
+            transform: translateX(160px);
         }
 
         .paper-nav-item.disabled {
@@ -281,16 +282,16 @@
                         <span>Next</span>
                         <i class="fas fa-angle-right fa-fw ms-2" aria-hidden="true"></i>
                     </button>
-                    <button class="paper-nav-item text-start">
+                    <button id="paper-save" class="paper-nav-item text-start">
                         <i class="fas fa-download fa-fw me-2" aria-hidden="true"></i>
                         <span>Save</span>
                     </button>
-                    <button class="paper-nav-item text-start"
+                    <button id="paper-print" class="paper-nav-item text-start"
                         onclick="setTimeout(function () { window.print(); }, 500);">
                         <i class="fas fa-print fa-fw me-2" aria-hidden="true"></i>
                         <span>Print</span>
                     </button>
-                    <button class="paper-nav-item text-start">
+                    <button id="paper-email" class="paper-nav-item text-start">
                         <i class="fas fa-mail-bulk fa-fw me-2" aria-hidden="true"></i>
                         <span>Email</span>
                     </button>
@@ -454,102 +455,405 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                     //     // e.relatedTarget 是之前被激活的 tab
                     //     hide();
                     // })
-                    var btnHided = false;
+                    // var btnHided = false;
 
-                    $('a[data-bs-toggle="tab"]:not([href="#paper-settings"])').on('shown.bs.tab', function (e) {
-                        show();
-                    });
+                    // $('a[data-bs-toggle="tab"]:not([href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                    //     show();
+                    // });
 
-                    $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
-                        if (!btnHided) {
-                            return;
-                        }
-                        showbtn();
-                        btnHided = false;
-                    });
+                    // $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
+                    //     if (!btnHided) {
+                    //         return;
+                    //     }
+                    //     showbtn();
+                    //     btnHided = false;
+                    // });
 
-                    $('a[data-bs-toggle="tab"]:not([href="#paper-report"]):not(a[href="#paper-settings"])').on('shown.bs.tab', function (e) {
-                        if (btnHided) {
-                            return;
-                        }
-                        hidebtn();
-                        btnHided = true;
-                    });
+                    // $('a[data-bs-toggle="tab"]:not([href="#paper-report"]):not(a[href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                    //     if (btnHided) {
+                    //         return;
+                    //     }
+                    //     hidebtn();
+                    //     btnHided = true;
+                    // });
 
-                    $('a[href="#paper-settings"]').on('shown.bs.tab', function (e) {
-                        hide();
-                    });
+                    // $('a[href="#paper-settings"]').on('shown.bs.tab', function (e) {
+                    //     hide();
+                    // });
 
                     // function hidebtn() {
                     //     $("#paper-previous, #paper-jumpto, #paper-next").addClass("hidden");
                     // }
 
-                    function hidebtn() {
-                        // 首先，我们添加 'move' 类来开始移动动画
-                        $("#paper-previous, #paper-jumpto, #paper-next").addClass("moveout");
+                    // function hidebtn() {
+                    //     // 首先，我们添加 'move' 类来开始移动动画
+                    //     $("#paper-previous, #paper-jumpto, #paper-next")
+                    //         .css("transition", "all 300ms")
+                    //         .addClass("moveout");
 
-                        // 然后，我们监听 'transitionend' 事件，当移动动画结束后，我们添加 'hidden' 类来开始隐藏动画
-                        $("#paper-previous.moveout, #paper-jumpto.moveout, #paper-next.moveout").one('transitionend', function () {
-                            // console.log("transitionend");
-                            // $(this).addClass("hidden");
-                            // 遍历每个元素，计算他们的高度，存储到data-height属性中，然后设置高度为0，时间600ms
-                            $(this).each(function () {
-                                // $(this).addClass("hidden");
-                                $(this).attr("data-animate-height", $(this).outerHeight());
-                                $(this).attr("data-animate-margin-top", $(this).css("margin-top"));
-                                $(this).attr("data-animate-margin-bottom", $(this).css("margin-bottom"));
-                                $(this).attr("data-animate-padding-top", $(this).css("padding-top"));
-                                $(this).attr("data-animate-padding-bottom", $(this).css("padding-bottom"));
-                            });
+                    //     // 然后，我们监听 'transitionend' 事件，当移动动画结束后，我们添加 'hidden' 类来开始隐藏动画
+                    //     $("#paper-previous.moveout, #paper-jumpto.moveout, #paper-next.moveout").one('transitionend', function () {
 
-                            $(this).animate({
-                                height: 0,
-                                "margin-top": 0,
-                                "margin-bottom": 0,
-                                "padding-top": 0,
-                                "padding-bottom": 0,
-                            }, {
-                                duration: 300,
-                                easing: "swing",
-                            }).promise().done(function () {
-                                $(this).hide();
+                    //         // console.log("transitionend");
+                    //         // $(this).addClass("hidden");
+                    //         // 遍历每个元素，计算他们的高度，存储到data-height属性中，然后设置高度为0，时间600ms
+                    //         $(this).each(function () {
+                    //             // $(this).addClass("hidden");
+                    //             $(this).removeAttr("style");
+                    //             $(this).attr("data-animate-height", $(this).outerHeight());
+                    //             $(this).attr("data-animate-margin-top", $(this).css("margin-top"));
+                    //             $(this).attr("data-animate-margin-bottom", $(this).css("margin-bottom"));
+                    //             $(this).attr("data-animate-padding-top", $(this).css("padding-top"));
+                    //             $(this).attr("data-animate-padding-bottom", $(this).css("padding-bottom"));
+                    //         });
+
+                    //         $(this).animate({
+                    //             height: 0,
+                    //             "margin-top": 0,
+                    //             "margin-bottom": 0,
+                    //             "padding-top": 0,
+                    //             "padding-bottom": 0,
+                    //         }, {
+                    //             duration: 300,
+                    //             easing: "swing",
+                    //         }).promise().done(function () {
+                    //             $(this).hide();
+                    //         });
+                    //     });
+                    // }
+
+                    // function showbtn() {
+                    //     // // 我们移除 'hidden' 和 'move' 类，这将恢复元素的原始状态，并触发反向的过渡动画
+                    //     // $("#paper-previous, #paper-jumpto, #paper-next").removeClass("hidden");
+                    //     // $("#paper-previous, #paper-jumpto, #paper-next").one('transitionend', function () {
+                    //     //     console.log("transitionend");
+                    //     //     $(this).removeClass("moveout");
+                    //     // });
+
+                    //     $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
+                    //         $(this).show().animate({
+                    //             height: $(this).attr("data-animate-height"),
+                    //             "margin-top": $(this).attr("data-animate-margin-top"),
+                    //             "margin-bottom": $(this).attr("data-animate-margin-bottom"),
+                    //             "padding-top": $(this).attr("data-animate-padding-top"),
+                    //             "padding-bottom": $(this).attr("data-animate-padding-bottom"),
+                    //         }, {
+                    //             duration: 300,
+                    //             easing: "swing",
+                    //         });
+                    //     }).promise().done(function () {
+                    //         $("#paper-previous, #paper-jumpto, #paper-next").css("transition", "all 300ms").removeClass("moveout");
+                    //         $("#paper-previous, #paper-jumpto, #paper-next").one('transitionend', function () {
+                    //             $(this).removeAttr("style");
+                    //         });
+                    //         // 移除内联样式
+                    //         $("#paper-previous, #paper-jumpto, #paper-next").removeAttr("style");
+                    //         // 移除data-animate开头的属性
+                    //         $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
+                    //             $(this).removeAttr("data-animate-height");
+                    //             $(this).removeAttr("data-animate-margin-top");
+                    //             $(this).removeAttr("data-animate-margin-bottom");
+                    //             $(this).removeAttr("data-animate-padding-top");
+                    //             $(this).removeAttr("data-animate-padding-bottom");
+                    //         });
+                    //     });
+                    // }
+
+                    // class ToolBar {
+                    //     constructor(config) {
+                    //         this.config = config;
+                    //         this.$toolBar = this.config.toolBar instanceof jQuery ? this.config.toolBar : $(this.config.toolBar);
+                    //         this.toolBtns = {};
+                    //         this.activeToolBtns = [];
+                    //         // this.init();
+                    //         // 所有的小工具都必须有id，且id的格式为paper-xxx
+
+                    //         this.init = this.init.bind(this);
+                    //         this.hideToolBtns = this.hideToolBtns.bind(this);
+                    //         this.showToolBtns = this.showToolBtns.bind(this);
+                    //         this.update = this.update.bind(this);
+
+                    //         this.init();
+                    //     }
+
+                    //     init() {
+                    //         // 遍历this.toolBar下的所有子元素，提取出id为paper-xxx的元素
+                    //         let self = this; // 保存 this 到 self 变量
+                    //         this.$toolBar.children().each(function () {
+                    //             console.log($(this));
+                    //             if ($(this).attr("id") &&
+                    //                 $(this).attr("id").startsWith("paper-")) {
+                    //                 const toolName = $(this).attr("id").replace("paper-", "");
+                    //                 self.toolBtns[toolName] = $(this)[0]; // 使用 self 而不是 this
+                    //             }
+                    //         });
+                    //     }
+
+                    //     hideToolBtns(toolBtnNameArray) {
+                    //         if (toolBtnNameArray.length === 0) {
+                    //             return;
+                    //         }
+                    //         let $toolBtns = $(); // 创建一个空的 jQuery 对象
+                    //         toolBtnNameArray.forEach(toolBtnName => {
+                    //             $toolBtns = $toolBtns.add(this.toolBtns[toolBtnName]);
+                    //         });
+
+                    //         console.log($toolBtns);
+
+                    //         $toolBtns
+                    //             .css("transition", "all 300ms")
+                    //             .addClass("moveout");
+
+                    //         // 然后，我们监听 'transitionend' 事件，当移动动画结束后，我们添加 'hidden' 类来开始隐藏动画
+                    //         $toolBtns.one('transitionend', function () {
+
+                    //             // console.log("transitionend");
+                    //             // $(this).addClass("hidden");
+                    //             // 遍历每个元素，计算他们的高度，存储到data-height属性中，然后设置高度为0，时间600ms
+                    //             $(this).each(function () {
+                    //                 // $(this).addClass("hidden");
+                    //                 $(this).removeAttr("style");
+                    //                 $(this).attr("data-animate-height", $(this).outerHeight());
+                    //                 $(this).attr("data-animate-margin-top", $(this).css("margin-top"));
+                    //                 $(this).attr("data-animate-margin-bottom", $(this).css("margin-bottom"));
+                    //                 $(this).attr("data-animate-padding-top", $(this).css("padding-top"));
+                    //                 $(this).attr("data-animate-padding-bottom", $(this).css("padding-bottom"));
+                    //             });
+
+                    //             $(this).animate({
+                    //                 height: 0,
+                    //                 "margin-top": 0,
+                    //                 "margin-bottom": 0,
+                    //                 "padding-top": 0,
+                    //                 "padding-bottom": 0,
+                    //             }, {
+                    //                 duration: 300,
+                    //                 easing: "swing",
+                    //             }).promise().done(function () {
+                    //                 $(this).hide();
+                    //             });
+                    //         });
+                    //     }
+
+                    //     showToolBtns(toolBtnNameArray) {
+                    //         if (toolBtnNameArray.length === 0) {
+                    //             return;
+                    //         }
+                    //         let $toolBtns = $(); // 创建一个空的 jQuery 对象
+                    //         toolBtnNameArray.forEach(toolBtnName => {
+                    //             $toolBtns = $toolBtns.add(this.toolBtns[toolBtnName]);
+                    //             console.log(this.toolBtns[toolBtnName]);
+                    //         });
+                    //         $toolBtns.each(function () {
+                    //             $(this).show().animate({
+                    //                 height: $(this).attr("data-animate-height"),
+                    //                 "margin-top": $(this).attr("data-animate-margin-top"),
+                    //                 "margin-bottom": $(this).attr("data-animate-margin-bottom"),
+                    //                 "padding-top": $(this).attr("data-animate-padding-top"),
+                    //                 "padding-bottom": $(this).attr("data-animate-padding-bottom"),
+                    //             }, {
+                    //                 duration: 300,
+                    //                 easing: "swing",
+                    //             });
+                    //         }).promise().done(function () {
+                    //             $toolBtns.css("transition", "all 300ms").removeClass("moveout");
+                    //             $toolBtns.one('transitionend', function () {
+                    //                 $(this).removeAttr("style");
+                    //             });
+                    //             // 移除内联样式
+                    //             $toolBtns.removeAttr("style");
+                    //             // 移除data-animate开头的属性
+                    //             $toolBtns.each(function () {
+                    //                 $(this).removeAttr("data-animate-height");
+                    //                 $(this).removeAttr("data-animate-margin-top");
+                    //                 $(this).removeAttr("data-animate-margin-bottom");
+                    //                 $(this).removeAttr("data-animate-padding-top");
+                    //                 $(this).removeAttr("data-animate-padding-bottom");
+                    //             });
+                    //         });
+                    //     }
+
+                    //     update(toolBtnNameArray) {
+                    //         // 对比activeToolBtns和toolBtnNameArray，找出需要隐藏的按钮和需要显示的按钮
+                    //         const hideToolBtns = this.activeToolBtns.filter(toolBtnName => !toolBtnNameArray.includes(toolBtnName));
+                    //         const showToolBtns = toolBtnNameArray.filter(toolBtnName => !this.activeToolBtns.includes(toolBtnName));
+                    //         // console.log(hideToolBtns, showToolBtns);
+
+                    //         this.hideToolBtns(hideToolBtns);
+                    //         this.showToolBtns(showToolBtns);
+                    //         this.activeToolBtns = toolBtnNameArray;
+                    //     }
+                    // }
+
+                    class ToolBar {
+                        constructor(config) {
+                            this.config = config;
+                            this.$toolBar = this.config.toolBar instanceof jQuery ? this.config.toolBar : $(this.config.toolBar);
+                            this.toolBtns = {};
+                            this.activeToolBtns = [];
+                            this.init();
+                        }
+
+                        init() {
+                            this.$toolBar.children().each((_, element) => {
+                                const $element = $(element);
+                                if ($element.attr("id")?.startsWith("paper-")) {
+                                    const toolName = $element.attr("id").replace("paper-", "");
+                                    this.toolBtns[toolName] = $element[0];
+                                }
                             });
-                        });
+                        }
+
+                        /**
+                         * 用于获取工具按钮
+                         * @param {string[]} toolBtnNameArray
+                         * @returns {JQuery<HTMLElement>} 返回一个jQuery对象
+                         */
+                        getToolBtns(toolBtnNameArray) {
+                            return toolBtnNameArray.reduce(($toolBtns, toolBtnName) => $toolBtns.add(this.toolBtns[toolBtnName]), $());
+                        }
+
+                        /**
+                         * 隐藏工具按钮的动画
+                         * @param {string[]} toolBtnNameArray
+                         * @returns {void}
+                         */
+                        hideToolBtns(toolBtnNameArray) {
+                            if (toolBtnNameArray.length === 0) {
+                                return;
+                            }
+
+                            const $toolBtns = this.getToolBtns(toolBtnNameArray);
+                            $toolBtns.css("transition", "all 300ms")
+                                .addClass("moveout")
+                                .one('transitionend', function () {
+                                    const $this = $(this);
+                                    const styles = {
+                                        "data-animate-height": $this.outerHeight(),
+                                        "data-animate-margin-top": $this.css("margin-top"),
+                                        "data-animate-margin-bottom": $this.css("margin-bottom"),
+                                        "data-animate-padding-top": $this.css("padding-top"),
+                                        "data-animate-padding-bottom": $this.css("padding-bottom"),
+                                    };
+                                    $this.removeAttr("style").attr(styles).animate({
+                                        height: 0,
+                                        "margin-top": 0,
+                                        "margin-bottom": 0,
+                                        "padding-top": 0,
+                                        "padding-bottom": 0,
+                                    }, {
+                                        duration: 300,
+                                        easing: "swing",
+                                    }).promise().done(function () {
+                                        $this.hide();
+                                    });
+                                });
+                        }
+
+                        /**
+                         * 显示工具按钮的动画
+                         * @param {string[]} toolBtnNameArray
+                         * @returns {void}
+                         */
+                        showToolBtns(toolBtnNameArray) {
+                            if (toolBtnNameArray.length === 0) {
+                                return;
+                            }
+
+                            const $toolBtns = this.getToolBtns(toolBtnNameArray);
+
+                            const animateBtns = ($btns) => {
+                                $btns.each(function () {
+                                    const $this = $(this);
+                                    $this.show().css({
+                                        height: $this.attr("data-animate-height"),
+                                        "margin-top": $this.attr("data-animate-margin-top"),
+                                        "margin-bottom": $this.attr("data-animate-margin-bottom"),
+                                        "padding-top": $this.attr("data-animate-padding-top"),
+                                        "padding-bottom": $this.attr("data-animate-padding-bottom"),
+                                    });
+                                });
+
+                                requestAnimationFrame(() => {
+                                    requestAnimationFrame(() => {
+                                        $btns.css("transition", "all 300ms")
+                                            .removeClass("moveout")
+                                            .one('transitionend', removeStylesAndAttributes);
+                                    });
+                                });
+                            };
+
+                            const removeStylesAndAttributes = function () {
+                                $(this).removeAttr("style");
+                                $(this).removeAttr("data-animate-height data-animate-margin-top data-animate-margin-bottom data-animate-padding-top data-animate-padding-bottom");
+                            };
+
+                            if (this.activeToolBtns.length === 0) {
+                                animateBtns($toolBtns);
+                            } else {
+                                $toolBtns.each(function () {
+                                    const $this = $(this);
+                                    $this.show().animate({
+                                        height: $this.attr("data-animate-height"),
+                                        "margin-top": $this.attr("data-animate-margin-top"),
+                                        "margin-bottom": $this.attr("data-animate-margin-bottom"),
+                                        "padding-top": $this.attr("data-animate-padding-top"),
+                                        "padding-bottom": $this.attr("data-animate-padding-bottom"),
+                                    }, {
+                                        duration: 300,
+                                        easing: "swing",
+                                    });
+                                }).promise().done(function () {
+                                    $toolBtns.css("transition", "all 300ms").removeClass("moveout").one('transitionend', removeStylesAndAttributes);
+                                });
+                            }
+                        }
+
+                        /**
+                         * 更新任务栏
+                         * @param {string[]} toolBtnNameArray
+                         * @returns {void}
+                         */
+                        update(toolBtnNameArray) {
+                            const hideToolBtns = this.activeToolBtns.filter(toolBtnName => !toolBtnNameArray.includes(toolBtnName));
+                            const showToolBtns = toolBtnNameArray.filter(toolBtnName => !this.activeToolBtns.includes(toolBtnName));
+                            this.hideToolBtns(hideToolBtns);
+                            this.showToolBtns(showToolBtns);
+                            this.activeToolBtns = toolBtnNameArray;
+                        }
                     }
 
-                    function showbtn() {
-                        // // 我们移除 'hidden' 和 'move' 类，这将恢复元素的原始状态，并触发反向的过渡动画
-                        // $("#paper-previous, #paper-jumpto, #paper-next").removeClass("hidden");
-                        // $("#paper-previous, #paper-jumpto, #paper-next").one('transitionend', function () {
-                        //     console.log("transitionend");
-                        //     $(this).removeClass("moveout");
-                        // });
+                    const toolBar = new ToolBar({
+                        toolBar: ".paper-nav-left",
+                    });
 
-                        $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
-                            $(this).show().animate({
-                                height: $(this).attr("data-animate-height"),
-                                "margin-top": $(this).attr("data-animate-margin-top"),
-                                "margin-bottom": $(this).attr("data-animate-margin-bottom"),
-                                "padding-top": $(this).attr("data-animate-padding-top"),
-                                "padding-bottom": $(this).attr("data-animate-padding-bottom"),
-                            }, {
-                                duration: 300,
-                                easing: "swing",
-                            });
-                        }).promise().done(function () {
-                            $("#paper-previous, #paper-jumpto, #paper-next").removeClass("moveout");
-                            // 移除内联样式
-                            $("#paper-previous, #paper-jumpto, #paper-next").removeAttr("style");
-                            // 移除data-animate开头的属性
-                            $("#paper-previous, #paper-jumpto, #paper-next").each(function () {
-                                $(this).removeAttr("data-animate-height");
-                                $(this).removeAttr("data-animate-margin-top");
-                                $(this).removeAttr("data-animate-margin-bottom");
-                                $(this).removeAttr("data-animate-padding-top");
-                                $(this).removeAttr("data-animate-padding-bottom");
-                            });
-                        });
-                    }
+                    $('a[data-bs-toggle="tab"]:not([href="#paper-report"]):not([href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                        // show();
+                        toolBar.update(["save", "print", "email"])
+                    });
+
+                    $('a[href="#paper-report"]').on('shown.bs.tab', function (e) {
+                        // if (!btnHided) {
+                        //     return;
+                        // }
+                        // showbtn();
+                        // btnHided = false;
+                        toolBar.update(["previous", "jumpto", "next", "save", "print", "email"])
+                    });
+
+                    // $('a[data-bs-toggle="tab"]:not([href="#paper-report"]):not(a[href="#paper-settings"])').on('shown.bs.tab', function (e) {
+                    //     // if (btnHided) {
+                    //     //     return;
+                    //     // }
+                    //     // hidebtn();
+                    //     // btnHided = true;
+
+                    // });
+
+                    $('a[href="#paper-settings"]').on('shown.bs.tab', function (e) {
+                        // hide();
+                        toolBar.update([])
+                    });
                 </script>
                 <div class="a4-paper sticky-note">
                     <div class="tab-content mt-5">
