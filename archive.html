@@ -690,7 +690,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                             this.config = config;
                             this.$toolBar = this.config.toolBar instanceof jQuery ? this.config.toolBar : $(this.config.toolBar);
                             this.toolBtns = {};
-                            this.activeToolBtns = [];
+                            this.activeToolBtns = ["previous", "jumpto", "next", "save", "print", "email"];
                             this.init();
                         }
 
