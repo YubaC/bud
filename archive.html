@@ -288,8 +288,7 @@
                         <i class="fas fa-download fa-fw me-2" aria-hidden="true"></i>
                         <span>Save</span>
                     </button>
-                    <button id="paper-print" class="paper-nav-item text-start"
-                        onclick="setTimeout(function () { window.print(); }, 500);">
+                    <button id="paper-print" class="paper-nav-item text-start">
                         <i class="fas fa-print fa-fw me-2" aria-hidden="true"></i>
                         <span>Print</span>
                     </button>
@@ -306,64 +305,64 @@
 
                 <script>
                     var page = 1;
-                    $("button.paper-nav-item").click(function () {
-                        if ($(this).hasClass("disabled")) {
-                            return;
-                        }
-                        // $("button.paper-nav-item").removeClass("active");
-                        $(this).addClass("active");
-                        setTimeout(function () {
-                            $("button.paper-nav-item").removeClass("active");
-                        }, 150);
-                    });
+                    // $("button.paper-nav-item").click(function () {
+                    //     if ($(this).hasClass("disabled")) {
+                    //         return;
+                    //     }
+                    //     // $("button.paper-nav-item").removeClass("active");
+                    //     $(this).addClass("active");
+                    //     setTimeout(function () {
+                    //         $("button.paper-nav-item").removeClass("active");
+                    //     }, 150);
+                    // });
                     // 阻止文本框的点击事件冒泡
-                    $("button.paper-nav-item input").click(function (event) {
-                        event.stopPropagation();
-                    });
-                    $("#paper-previous").click(function () {
-                        if (page === 1) {
-                            $(this).addClass("disabled");
-                            return;
-                        } else if (page === 2) {
-                            $(this).addClass("disabled");
-                        }
-                        page--;
-                        $("#paper-next").removeClass("disabled");
-                        $("#paper-jumpto input").val(page);
-                        changePage();
-                    });
+                    // $("button.paper-nav-item input").click(function (event) {
+                    //     event.stopPropagation();
+                    // });
+                    // $("#paper-previous").click(function () {
+                    //     if (page === 1) {
+                    //         $(this).addClass("disabled");
+                    //         return;
+                    //     } else if (page === 2) {
+                    //         $(this).addClass("disabled");
+                    //     }
+                    //     page--;
+                    //     $("#paper-next").removeClass("disabled");
+                    //     $("#paper-jumpto input").val(page);
+                    //     changePage();
+                    // });
 
-                    $("#paper-next").click(function () {
-                        if (page === 5) {
-                            $(this).addClass("disabled");
-                            return;
-                        } else if (page === 4) {
-                            $(this).addClass("disabled");
-                        }
-                        page++;
-                        $("#paper-previous").removeClass("disabled");
-                        $("#paper-jumpto input").val(page);
-                        changePage();
-                    });
+                    // $("#paper-next").click(function () {
+                    //     if (page === 5) {
+                    //         $(this).addClass("disabled");
+                    //         return;
+                    //     } else if (page === 4) {
+                    //         $(this).addClass("disabled");
+                    //     }
+                    //     page++;
+                    //     $("#paper-previous").removeClass("disabled");
+                    //     $("#paper-jumpto input").val(page);
+                    //     changePage();
+                    // });
 
-                    $("#paper-jumpto").click(function () {
-                        newPage = Number($(this).find("input").val());
-                        if (newPage < 1 || newPage > 5 || newPage === page) {
-                            return;
-                        }
-                        page = newPage;
-                        if (page === 1) {
-                            $("#paper-previous").addClass("disabled");
-                            $("#paper-next").removeClass("disabled");
-                        } else if (page === 5) {
-                            $("#paper-next").addClass("disabled");
-                            $("#paper-previous").removeClass("disabled");
-                        } else {
-                            $("#paper-previous").removeClass("disabled");
-                            $("#paper-next").removeClass("disabled");
-                        }
-                        changePage();
-                    });
+                    // $("#paper-jumpto").click(function () {
+                    //     newPage = Number($(this).find("input").val());
+                    //     if (newPage < 1 || newPage > 5 || newPage === page) {
+                    //         return;
+                    //     }
+                    //     page = newPage;
+                    //     if (page === 1) {
+                    //         $("#paper-previous").addClass("disabled");
+                    //         $("#paper-next").removeClass("disabled");
+                    //     } else if (page === 5) {
+                    //         $("#paper-next").addClass("disabled");
+                    //         $("#paper-previous").removeClass("disabled");
+                    //     } else {
+                    //         $("#paper-previous").removeClass("disabled");
+                    //         $("#paper-next").removeClass("disabled");
+                    //     }
+                    //     changePage();
+                    // });
 
                     const texts = [
                         `[Page 1] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices tempus aliquam. Vestibulum vehicula massa ex, ut mattis sem volutpat nec. Donec malesuada volutpat molestie. Proin id velit arcu. Phasellus accumsan consectetur libero non vestibulum. Donec sollicitudin, lacus pulvinar pharetra molestie, quam sapien pretium sem, in sodales diam mi id odio. Sed tincidunt augue vel quam venenatis posuere. Nam sodales diam ornare maximus venenatis. Aliquam condimentum justo sit amet consequat malesuada. Nulla volutpat dui a arcu elementum hendrerit. Nunc egestas elementum ipsum, ut laoreet nibh condimentum id. Praesent nec dolor sagittis, consectetur sem in, pharetra leo. Vestibulum odio urna, luctus nec elit eu, rhoncus rutrum libero.
@@ -393,6 +392,41 @@ Morbi quis interdum mauris, ut mollis libero. Proin ac condimentum leo. Nam at o
 Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus, commodo at facilisis quis, fermentum in lectus. Etiam vel euismod odio, dictum ullamcorper felis. Donec ut tempor lorem, vitae dapibus nibh. Vivamus ullamcorper auctor turpis sed dapibus. Phasellus et velit vel purus pulvinar dapibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus egestas facilisis ipsum in hendrerit. Donec eget pharetra felis, eu fermentum risus. Pellentesque lacinia ut velit nec suscipit. Aliquam erat volutpat. Aliquam sollicitudin fermentum pellentesque. Aliquam ultrices eros ligula, et aliquet ex auctor eleifend. Suspendisse molestie ligula sed tincidunt viverra. Donec tempus magna sem, non feugiat arcu vestibulum sed. Nam aliquam ut turpis eget pulvinar. `,
                     ]
 
+                    const charts = [`<div id="kid-chart" class="mt-4"></div>`];
+
+                    const results = [
+                        `<div class="row mx-auto w-100">
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2024-01-04T15:02:18.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2022-06-28T17:09:18.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
+                        </div>`,
+                        `<div class="row mx-auto w-100">
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2022-05-01T13:07:13.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2021-09-30T09:31:52.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
+                            <a href="/" class="archive-card card col-md-5 empty"></a>
+                            <div class="col-md-5 mx-auto"></div>
+                        </div>`,
+                    ]
+
                     function changePage() {
                         $("#paper-report").find("div").css("opacity", 0);
                         setTimeout(function () {
@@ -416,7 +450,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                         $(".paper-nav-left").css("transform", "translateX(200px)");
                     }
 
-                    changePage();
+                    // changePage();
                 </script>
 
                 <nav id="section-bar" class="paper-nav paper-nav-right nav flex-column">
@@ -446,405 +480,6 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                     </a>
                 </nav>
 
-                <script>
-                    class Animate {
-                        /**
-                         * @param {object} config
-                         * @param {string[]} [config.quene] 动画队列，里面的动画会逐个执行
-                         *                                  每个动画都是一个字典，包含以下属性：
-                         *                                  - selector: 选择器，可以是选择器字符串、原生DOM对象或jQuery对象
-                         *                                  - duration: 动画的持续时间，单位是毫秒
-                         *                                  - params: 动画的参数，是一个字典，使用CSS属性作为键，使用CSS属性值作为值
-                         *                                            例如：{ "width": "100px", "height": "100px" }
-                         *                                  - delay（可选）: 动画的延迟时间，单位是毫秒，当此属性存在时，其他属性可以省略
-                         *                                  - easing（可选）: 动画的缓动函数
-                         *                                  例如：{ selector: "#paper-report", duration: 1000, params: { "width": "100px", "height": "100px" } }
-                         *                                  当子元素是一个数组时，会同时执行数组内的所有动画
-                         * @param {function} [config.callback] 动画队列执行完毕后的回调函数
-                         */
-                        constructor(config) {
-                            this.quene = config.quene || [];
-                            this.callback = config.callback || (() => { });
-
-                            this.runningAnimation = null;
-                            this.stopFlag = false;
-
-                            this.init = this.init.bind(this);
-                            this.init();
-                        }
-
-                        async init() {
-                            for (let animate of this.quene) {
-                                if (this.stopFlag) {
-                                    break;
-                                }
-
-                                if (Array.isArray(animate)) {
-                                    const animationPromises = animate.map(anim => this.doAnimation(anim));
-                                    this.runningAnimation = await Promise.all(animationPromises);
-                                } else {
-                                    this.runningAnimation = await this.doAnimation(animate);
-                                }
-                            }
-
-                            this.callback();
-                        }
-
-                        /** 执行动画的函数
-                         * @param {object} animate 动画对象，和构造函数的config.quene数组中的元素相同
-                         * @returns {promise | null} 如果动画时间不为0，则返回一个promise对象，否则返回null
-                         */
-                        doAnimation(animate) {
-                            const $element = animate.selector instanceof jQuery ? animate.selector : $(animate.selector);
-                            const duration = animate.duration || 0;
-                            const params = animate.params;
-                            const delay = animate.delay || 0;
-                            const easing = animate.easing || "swing";
-
-                            if (delay) {
-                                return new Promise(resolve => {
-                                    setTimeout(resolve, delay);
-                                });
-                            }
-
-                            if (duration === 0) {
-                                $element.css(params);
-                                return null;
-                            }
-
-                            const promise = new Promise(resolve => {
-                                setTimeout(() => {
-                                    $element.animate(params, {
-                                        duration,
-                                        easing,
-                                        complete: resolve,
-                                    });
-                                }, delay);
-                            });
-
-                            return promise;
-                        }
-
-                        stop() {
-                            this.stopFlag = true;
-                            if (this.runningAnimation) {
-                                if (Array.isArray(this.runningAnimation)) {
-                                    this.runningAnimation.forEach(animation => {
-                                        if (!animation) {
-                                            return;
-                                        }
-                                        const $element = animation.selector instanceof jQuery ? animation.selector : $(animation.selector);
-                                        $element.stop();
-                                    });
-                                } else {
-                                    const $element = this.runningAnimation.selector instanceof jQuery ? this.runningAnimation.selector : $(this.runningAnimation.selector);
-                                    $element.stop();
-                                }
-                            }
-                        }
-                    }
-
-                    class ToolBar {
-                        /**
-                         * @param {object} config
-                         * @param {string} config.toolBar 工具栏的选择器，可以是选择器字符串、原生DOM对象或jQuery对象
-                         * @param {string[]} [config.needHideToolBtns] 在最开始需要隐藏的工具按钮
-                         */
-                        constructor(config) {
-                            this.config = config;
-                            this.$toolBar = this.config.toolBar instanceof jQuery ? this.config.toolBar : $(this.config.toolBar);
-                            this.toolBtns = {};
-
-                            this.previousActiveToolBtns = ["previous", "jumpto", "next", "save", "print", "email"];
-                            // !不能直接赋值this.activeToolBtns = this.previousActiveToolBtns，因为会导致浅拷贝
-                            this.activeToolBtns = ["previous", "jumpto", "next", "save", "print", "email"];
-
-                            this.hideAnimation = null;
-                            this.showAnimation = null;
-                            this.init();
-                        }
-
-                        init() {
-                            this.$toolBar.children().each((_, element) => {
-                                const $element = $(element);
-                                if ($element.attr("id")?.startsWith("paper-")) {
-                                    const toolName = $element.attr("id").replace("paper-", "");
-                                    this.toolBtns[toolName] = $element[0];
-                                }
-                            });
-                            const needHideToolBtns = this.config.needHideToolBtns || [];
-
-                            const toolsNames = Object.keys(this.toolBtns);
-                            this.previousActiveToolBtns = toolsNames.filter(toolName => !needHideToolBtns.includes(toolName));
-                            this.activeToolBtns = toolsNames.filter(toolName => !needHideToolBtns.includes(toolName));
-
-                            this.getToolBtns(needHideToolBtns).hide();
-                        }
-
-                        /**
-                         * 用于获取工具按钮
-                         * @param {string[]} toolBtnNameArray
-                         * @returns {JQuery<HTMLElement>} 返回一个jQuery对象
-                         */
-                        getToolBtns(toolBtnNameArray) {
-                            return toolBtnNameArray.reduce(($toolBtns, toolBtnName) => $toolBtns.add(this.toolBtns[toolBtnName]), $());
-                        }
-
-                        /**
-                         * 隐藏工具按钮的动画
-                         * @param {string[]} toolBtnNameArray
-                         * @returns {void}
-                         */
-                        hideToolBtns(toolBtnNameArray) {
-                            if (toolBtnNameArray.length === 0) {
-                                return;
-                            }
-
-                            if (this.hideAnimation) {
-                                this.hideAnimation.stop();
-                            }
-                            // if (this.showAnimation) {
-                            //     this.showAnimation.stop();
-                            //     this.showAnimation = null;
-                            // }
-
-                            // !以下几种情况可以跳过后面的缩小高度动画
-                            // 1. （工具栏从一些按钮完全换成另一些按钮，换之前和换之后没有交集），
-                            //    且更新后的列表（this.activeToolBtns）不为空（工具栏不空）
-
-                            const passRestoreHeightAnimation =
-                                this.activeToolBtns.filter(toolBtnName => this.previousActiveToolBtns.includes(toolBtnName)).length === 0
-                                && this.previousActiveToolBtns.length !== 0;
-
-                            const $toolBtns = this.getToolBtns(toolBtnNameArray);
-                            $toolBtns
-                                .css("transition", "none")
-                                .each(function () {
-                                    const $this = $(this);
-                                    $this.attr("data-animate-height", `${$this.outerHeight()}px`);
-                                    $this.attr("data-animate-margin-top", $this.css("margin-top"));
-                                    $this.attr("data-animate-margin-bottom", $this.css("margin-bottom"));
-                                    $this.attr("data-animate-padding-top", $this.css("padding-top"));
-                                    $this.attr("data-animate-padding-bottom", $this.css("padding-bottom"));
-                                });
-
-                            const moveAnimation = $toolBtns.map((_, element) => {
-                                const $element = $(element);
-                                return {
-                                    selector: $element,
-                                    duration: 300,
-                                    params: {
-                                        transform: "translateX(160px)",
-                                    },
-                                };
-                            }).get();
-                            const hideAnimation = $toolBtns.map((_, element) => {
-                                const $element = $(element);
-                                return {
-                                    selector: $element,
-                                    duration: passRestoreHeightAnimation ? 0 : 300,
-                                    params: {
-                                        height: 0,
-                                        "margin-top": 0,
-                                        "margin-bottom": 0,
-                                        "padding-top": 0,
-                                        "padding-bottom": 0,
-                                    },
-                                };
-                            }).get();
-
-                            this.hideAnimation = new Animate({
-                                quene: [
-                                    moveAnimation,
-                                    hideAnimation,
-                                ],
-                                callback: () => {
-                                    $toolBtns.hide();
-                                    this.hideAnimation = null;
-                                },
-                            });
-                        }
-
-                        /**
-                         * 显示工具按钮的动画
-                         * @param {string[]} toolBtnNameArray
-                         * @returns {void}
-                         */
-                        showToolBtns(toolBtnNameArray) {
-                            if (toolBtnNameArray.length === 0) {
-                                return;
-                            }
-
-                            const $toolBtns = this.getToolBtns(toolBtnNameArray);
-                            // $toolBtns.show();
-
-                            // if (this.hideAnimation) {
-                            //     this.hideAnimation.stop();
-                            //     this.hideAnimation = null;
-                            // }
-                            if (this.showAnimation) {
-                                this.showAnimation.stop();
-                            }
-
-                            // !以下几种情况可以跳过前面的恢复高度动画，直接执行移动动画
-                            // 1. 当前活跃的按钮列表为空（工具栏空了）
-                            // 2. 隐藏动画执行完成后的工具栏为空（这个条件需要在启动前额外等待300ms）
-                            // 3. 工具栏不为空，但是需要展示的按钮均位于工具栏的最后且连续
-
-                            // 判断需要展示的按钮是否位于按钮列表的最后且连续
-                            // 例如，当前按钮列表为["previous", "jumpto", "next", "save", "print", "email"]
-                            // 需要展示的按钮列表为["save", "print", "email"]
-                            // 那么它们符合条件
-                            // 如果需要展示的按钮列表为["next", "print", "email"]
-                            // 那么它们不符合条件
-                            // 如果需要展示的按钮列表为["previous", "jumpto", "next"]，仍然不符合条件，因为它们结尾的按钮不是最后一个按钮
-                            const isContinuousAtEnd = toolBtnNameArray.every((toolBtnName, index) => {
-                                const toolBtnKeys = Object.keys(this.toolBtns);
-                                const offsetIndex = toolBtnKeys.length - toolBtnNameArray.length + index;
-                                const targetToolBtnName = toolBtnKeys[offsetIndex];
-
-                                return toolBtnName === targetToolBtnName;
-                            });
-                            // 判断当前活跃的按钮列表是否为空
-                            const isActiveToolBtnsEmpty = this.previousActiveToolBtns.length === 0;
-
-                            // 判断隐藏动画执行完成后的工具栏是否为空，
-                            // 判断方法为：this.activeToolBtns 和 this.previousActiveToolBtns 的交集是否为空
-                            const isHideToolBtnsEmpty = this.activeToolBtns.filter(toolBtnName => this.previousActiveToolBtns.includes(toolBtnName)).length === 0;
-
-                            // 判断是否需要跳过恢复高度动画
-                            const skipRestoreHeightAnimation = isContinuousAtEnd || isActiveToolBtnsEmpty || isHideToolBtnsEmpty;
-
-                            const showBtnAnimation = $toolBtns.map((_, element) => {
-                                const $element = $(element);
-                                return {
-                                    selector: $element,
-                                    duration: skipRestoreHeightAnimation ? 0 : 300,
-                                    params: {
-                                        height: $element.attr("data-animate-height"),
-                                        "margin-top": $element.attr("data-animate-margin-top"),
-                                        "margin-bottom": $element.attr("data-animate-margin-bottom"),
-                                        "padding-top": $element.attr("data-animate-padding-top"),
-                                        "padding-bottom": $element.attr("data-animate-padding-bottom"),
-                                    },
-                                };
-                            }).get();
-
-                            const moveAnimation = {
-                                selector: $toolBtns,
-                                duration: 300,
-                                params: {
-                                    transform: "translateX(0px)",
-                                },
-                            }
-
-                            const animationQuene = [
-                                {
-                                    selector: $toolBtns,
-                                    duration: 0,
-                                    params: {
-                                        display: "block",
-                                    },
-                                },
-                                showBtnAnimation,
-                                moveAnimation
-                            ];
-
-                            // 如果隐藏动画执行完成后的工具栏为空（工具栏从一些按钮完全换成另一些按钮，换之前和换之后没有交集），
-                            // 且之前不为空（也就是说，工具栏不能刚刚从空变成不空）
-                            if (isHideToolBtnsEmpty && !isActiveToolBtnsEmpty) {
-                                animationQuene.unshift({
-                                    delay: 300,
-                                });
-                            }
-
-                            this.showAnimation = new Animate({
-                                quene: animationQuene,
-                                callback: () => {
-                                    $toolBtns.removeAttr("style");
-                                    $toolBtns.removeAttr("data-animate-height data-animate-margin-top data-animate-margin-bottom data-animate-padding-top data-animate-padding-bottom");
-                                    this.showAnimation = null;
-                                },
-                            });
-                        }
-
-                        /**
-                         * 更新任务栏
-                         * @param {string[]} toolBtnNameArray
-                         * @returns {void}
-                         */
-                        update(toolBtnNameArray) {
-                            this.previousActiveToolBtns = Array.from(this.activeToolBtns); // 深拷贝
-                            this.activeToolBtns = toolBtnNameArray;
-                            const hideToolBtns = this.previousActiveToolBtns.filter(toolBtnName => !this.activeToolBtns.includes(toolBtnName));
-                            const showToolBtns = this.activeToolBtns.filter(toolBtnName => !this.previousActiveToolBtns.includes(toolBtnName));
-                            // console.log(this.previousActiveToolBtns, this.activeToolBtns);
-                            this.hideToolBtns(hideToolBtns);
-                            this.showToolBtns(showToolBtns);
-                        }
-                    }
-
-                    class Paper {
-                        /**
-                         * @param {object} config
-                         * @param {string} config.sectionBar 侧边栏的选择器，可以是jQuery对象，也可以是选择器字符串，还可以是原生的DOM对象
-                         */
-                        constructor(config) {
-                            const $sectionBar = config.sectionBar instanceof jQuery ? config.sectionBar : $(config.sectionBar);
-                            this.$sectionBar = $sectionBar;
-                            // 页面
-                            this.pages = [
-                                {
-                                    id: "paper-report",
-                                    name: "Report",
-                                    toolBar: ["previous", "jumpto", "next", "save", "print", "email"],
-                                },
-                                {
-                                    id: "paper-insights",
-                                    name: "Insights",
-                                    toolBar: ["save", "print", "email"],
-                                },
-                                {
-                                    id: "paper-history",
-                                    name: "History",
-                                    toolBar: ["previous", "jumpto", "next"],
-                                },
-                                {
-                                    id: "paper-settings",
-                                    name: "Settings",
-                                    toolBar: [],
-                                }
-                            ];
-
-                            this.toolBar = new ToolBar({
-                                toolBar: "#tool-bar",
-                                initialToolBtns: this.pages[0].toolBar,
-                            });
-
-                            this.init = this.init.bind(this);
-                            this.init();
-                        }
-
-                        init() {
-                            // 监听bootstrap的tab事件
-                            this.$sectionBar
-                                .find('a[data-bs-toggle="tab"]')
-                                .on('shown.bs.tab', (e) => {
-                                    const $target = $(e.target); // newly activated tab
-                                    const $previous = $(e.relatedTarget); // previous active tab
-                                    const targetId = $target.attr("href").slice(1);
-                                    const previousId = $previous.attr("href").slice(1);
-                                    const targetPage = this.pages.find(page => page.id === targetId);
-                                    const previousPage = this.pages.find(page => page.id === previousId);
-                                    this.toolBar.update(targetPage.toolBar);
-                                });
-                        }
-                    }
-
-                    const paper = new Paper({
-                        sectionBar: "#section-bar",
-                    });
-                </script>
                 <div class="a4-paper sticky-note">
                     <div class="tab-content mt-5">
                         <div id="paper-report" class="tab-pane fade active show w-100">
@@ -866,7 +501,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                         </div>
 
                         <div id="paper-history" class="tab-pane fade w-100">
-                            <div class="row mx-auto w-100">
+                            <!-- <div class="row mx-auto w-100">
                                 <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
                                     <img src="./images/bone-hand.jpg" alt="" class="w-100">
                                     <div class="name"><relative-time datetime="2024-01-04T15:02:18.000Z"
@@ -881,7 +516,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                                 </a>
                                 <a href="/" class="archive-card card col-md-5 empty"></a>
                                 <div class="col-md-5 mx-auto"></div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div id="paper-settings" class="tab-pane fade w-100">
@@ -928,8 +563,9 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
 
     <footer></footer>
 </body>
-<script language="JavaScript">
-    $(document).ready(function () {
+
+<script>
+    function showDatGraph() {
         // var title = {
         //     text: '月平均气温'
         // };
@@ -993,7 +629,705 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
         };
 
         $('#kid-chart').highcharts(json);
+    }
+
+
+    class Animate {
+        /**
+         * @param {object} config
+         * @param {string[]} [config.quene] 动画队列，里面的动画会逐个执行
+         *                                  每个动画都是一个字典，包含以下属性：
+         *                                  - selector: 选择器，可以是选择器字符串、原生DOM对象或jQuery对象
+         *                                  - duration: 动画的持续时间，单位是毫秒
+         *                                  - params: 动画的参数，是一个字典，使用CSS属性作为键，使用CSS属性值作为值
+         *                                            例如：{ "width": "100px", "height": "100px" }
+         *                                  - delay（可选）: 动画的延迟时间，单位是毫秒，当此属性存在时，其他属性可以省略
+         *                                  - easing（可选）: 动画的缓动函数
+         *                                  例如：{ selector: "#paper-report", duration: 1000, params: { "width": "100px", "height": "100px" } }
+         *                                  当子元素是一个数组时，会同时执行数组内的所有动画
+         * @param {function} [config.callback] 动画队列执行完毕后的回调函数
+         */
+        constructor(config) {
+            this.quene = config.quene || [];
+            this.callback = config.callback || (() => { });
+
+            this.runningAnimation = null;
+            this.stopFlag = false;
+
+            this.init = this.init.bind(this);
+            this.init();
+        }
+
+        async init() {
+            for (let animate of this.quene) {
+                if (this.stopFlag) {
+                    break;
+                }
+
+                if (Array.isArray(animate)) {
+                    const animationPromises = animate.map(anim => this.doAnimation(anim));
+                    this.runningAnimation = await Promise.all(animationPromises);
+                } else {
+                    this.runningAnimation = await this.doAnimation(animate);
+                }
+            }
+
+            this.callback();
+        }
+
+        /** 执行动画的函数
+         * @param {object} animate 动画对象，和构造函数的config.quene数组中的元素相同
+         * @returns {promise | null} 如果动画时间不为0，则返回一个promise对象，否则返回null
+         */
+        doAnimation(animate) {
+            const $element = animate.selector instanceof jQuery ? animate.selector : $(animate.selector);
+            const duration = animate.duration || 0;
+            const params = animate.params;
+            const delay = animate.delay || 0;
+            const easing = animate.easing || "swing";
+
+            if (delay) {
+                return new Promise(resolve => {
+                    setTimeout(resolve, delay);
+                });
+            }
+
+            if (duration === 0) {
+                $element.css(params);
+                return null;
+            }
+
+            const promise = new Promise(resolve => {
+                setTimeout(() => {
+                    $element.animate(params, {
+                        duration,
+                        easing,
+                        complete: resolve,
+                    });
+                }, delay);
+            });
+
+            return promise;
+        }
+
+        stop() {
+            this.stopFlag = true;
+            if (this.runningAnimation) {
+                if (Array.isArray(this.runningAnimation)) {
+                    this.runningAnimation.forEach(animation => {
+                        if (!animation) {
+                            return;
+                        }
+                        const $element = animation.selector instanceof jQuery ? animation.selector : $(animation.selector);
+                        $element.stop();
+                    });
+                } else {
+                    const $element = this.runningAnimation.selector instanceof jQuery ? this.runningAnimation.selector : $(this.runningAnimation.selector);
+                    $element.stop();
+                }
+            }
+        }
+    }
+
+    class ToolBar {
+        /**
+         * @param {object} config
+         * @param {string} config.toolBar 工具栏的选择器，可以是选择器字符串、原生DOM对象或jQuery对象
+         * @param {string[]} [config.needHideToolBtns] 在最开始需要隐藏的工具按钮
+         */
+        constructor(config) {
+            this.config = config;
+            this.$toolBar = this.config.toolBar instanceof jQuery ? this.config.toolBar : $(this.config.toolBar);
+            this.toolBtns = {
+                "previous": {
+                    element: this.$toolBar.find("#paper-previous")[0],
+                    function: () => { },
+                    disable: () => {
+                        this.toolBtns.previous.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.previous.element.classList.remove("disabled");
+                    },
+                },
+                "jumpto": {
+                    element: this.$toolBar.find("#paper-jumpto")[0],
+                    function: () => { },
+                    getValue: () => Number(this.toolBtns.jumpto.element.querySelector("input").value),
+                    setValue: value => this.toolBtns.jumpto.element.querySelector("input").value = value,
+                    setRange: (min, max) => {
+                        this.toolBtns.jumpto.element.querySelector("input").setAttribute("min", min);
+                        this.toolBtns.jumpto.element.querySelector("input").setAttribute("max", max);
+                    },
+                    disable: () => {
+                        this.toolBtns.jumpto.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.jumpto.element.classList.remove("disabled");
+                    },
+                },
+                "next": {
+                    element: this.$toolBar.find("#paper-next")[0],
+                    function: () => { },
+                    disable: () => {
+                        this.toolBtns.next.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.next.element.classList.remove("disabled");
+                    },
+                },
+                "save": {
+                    element: this.$toolBar.find("#paper-save")[0],
+                    function: () => {
+                        console.log("save");
+                    },
+                    disable: () => {
+                        this.toolBtns.save.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.save.element.classList.remove("disabled");
+                    },
+                },
+                "print": {
+                    element: this.$toolBar.find("#paper-print")[0],
+                    function: () => {
+                        console.log("print");
+                    },
+                    disable: () => {
+                        this.toolBtns.print.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.print.element.classList.remove("disabled");
+                    },
+                },
+                "email": {
+                    element: this.$toolBar.find("#paper-email")[0],
+                    function: () => {
+                        console.log("email");
+                    },
+                    disable: () => {
+                        this.toolBtns.email.element.classList.add("disabled");
+                    },
+                    enable: () => {
+                        this.toolBtns.email.element.classList.remove("disabled");
+                    },
+                },
+            };
+
+            this.previousActiveToolBtns = ["previous", "jumpto", "next", "save", "print", "email"];
+            // !不能直接赋值this.activeToolBtns = this.previousActiveToolBtns，因为会导致浅拷贝
+            this.activeToolBtns = ["previous", "jumpto", "next", "save", "print", "email"];
+
+            this.hideAnimation = null;
+            this.showAnimation = null;
+            this.init();
+        }
+
+        init() {
+            // 隐藏不需要的工具按钮
+            const needHideToolBtns = this.config.needHideToolBtns || [];
+            const toolsNames = Object.keys(this.toolBtns);
+            this.previousActiveToolBtns = toolsNames.filter(toolName => !needHideToolBtns.includes(toolName));
+            this.activeToolBtns = toolsNames.filter(toolName => !needHideToolBtns.includes(toolName));
+            this.getToolBtns(needHideToolBtns).hide();
+            // 为工具栏按钮绑定事件
+            Object.values(this.toolBtns).forEach(toolBtn => {
+                toolBtn.element.addEventListener("click", this.buttonJump);
+                toolBtn.element.addEventListener(
+                    "click", () => { // 这里必须使用箭头函数，否则this指向会变成window导致出错
+                        if (toolBtn.element.classList.contains("disabled")) {
+                            return;
+                        }
+                        this.toolBtns[toolBtn.element.getAttribute("id").replace("paper-", "")].function();
+                    });
+                // 如果点击的是input，那么阻止事件冒泡
+                toolBtn.element.querySelector("input")?.addEventListener("click", event => {
+                    event.stopPropagation();
+                });
+            });
+        }
+
+        /**
+         * 用于在工具栏按钮被点击后让它跳一下
+         * @param {event} event 事件对象
+         * @returns {void}
+         */
+        async buttonJump(event) {
+            const $element = $(event.currentTarget);
+            if ($element.hasClass("disabled")) {
+                return;
+            }
+
+            $element.addClass("active");
+            await new Promise(resolve => setTimeout(resolve, 150));
+            $element.removeClass("active");
+        }
+
+        /**
+         * 用于获取工具按钮
+         * @param {string[]} toolBtnNameArray
+         * @returns {JQuery<HTMLElement>} 返回一个jQuery对象
+         */
+        getToolBtns(toolBtnNameArray) {
+            return toolBtnNameArray.reduce(($toolBtns, toolBtnName) => $toolBtns.add(this.toolBtns[toolBtnName].element), $());
+        }
+
+        /**
+         * 隐藏工具按钮的动画
+         * @param {string[]} toolBtnNameArray
+         * @returns {void}
+         */
+        hideToolBtns(toolBtnNameArray) {
+            if (toolBtnNameArray.length === 0) {
+                return;
+            }
+
+            if (this.hideAnimation) {
+                this.hideAnimation.stop();
+            }
+            // if (this.showAnimation) {
+            //     this.showAnimation.stop();
+            //     this.showAnimation = null;
+            // }
+
+            // !以下几种情况可以跳过后面的缩小高度动画
+            // 1. （工具栏从一些按钮完全换成另一些按钮，换之前和换之后没有交集），
+            //    且更新后的列表（this.activeToolBtns）不为空（工具栏不空）
+
+            const passRestoreHeightAnimation =
+                this.activeToolBtns.filter(toolBtnName => this.previousActiveToolBtns.includes(toolBtnName)).length === 0
+                && this.previousActiveToolBtns.length !== 0;
+
+            const $toolBtns = this.getToolBtns(toolBtnNameArray);
+            $toolBtns
+                .css("transition", "none")
+                .each(function () {
+                    const $this = $(this);
+                    $this.attr("data-animate-height", `${$this.outerHeight()}px`);
+                    $this.attr("data-animate-margin-top", $this.css("margin-top"));
+                    $this.attr("data-animate-margin-bottom", $this.css("margin-bottom"));
+                    $this.attr("data-animate-padding-top", $this.css("padding-top"));
+                    $this.attr("data-animate-padding-bottom", $this.css("padding-bottom"));
+                });
+
+            const moveAnimation = $toolBtns.map((_, element) => {
+                const $element = $(element);
+                return {
+                    selector: $element,
+                    duration: 300,
+                    params: {
+                        transform: "translateX(160px)",
+                    },
+                };
+            }).get();
+            const hideAnimation = $toolBtns.map((_, element) => {
+                const $element = $(element);
+                return {
+                    selector: $element,
+                    duration: passRestoreHeightAnimation ? 0 : 300,
+                    params: {
+                        height: 0,
+                        "margin-top": 0,
+                        "margin-bottom": 0,
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                    },
+                };
+            }).get();
+
+            this.hideAnimation = new Animate({
+                quene: [
+                    moveAnimation,
+                    hideAnimation,
+                ],
+                callback: () => {
+                    $toolBtns.hide();
+                    this.hideAnimation = null;
+                },
+            });
+        }
+
+        /**
+         * 显示工具按钮的动画
+         * @param {string[]} toolBtnNameArray
+         * @returns {void}
+         */
+        showToolBtns(toolBtnNameArray) {
+            if (toolBtnNameArray.length === 0) {
+                return;
+            }
+
+            const $toolBtns = this.getToolBtns(toolBtnNameArray);
+            // $toolBtns.show();
+
+            // if (this.hideAnimation) {
+            //     this.hideAnimation.stop();
+            //     this.hideAnimation = null;
+            // }
+            if (this.showAnimation) {
+                this.showAnimation.stop();
+            }
+
+            // !以下几种情况可以跳过前面的恢复高度动画，直接执行移动动画
+            // 1. 当前活跃的按钮列表为空（工具栏空了）
+            // 2. 隐藏动画执行完成后的工具栏为空（这个条件需要在启动前额外等待300ms）
+            // 3. 工具栏不为空，但是需要展示的按钮均位于工具栏的最后且连续
+
+            // 判断需要展示的按钮是否位于按钮列表的最后且连续
+            // 例如，当前按钮列表为["previous", "jumpto", "next", "save", "print", "email"]
+            // 需要展示的按钮列表为["save", "print", "email"]
+            // 那么它们符合条件
+            // 如果需要展示的按钮列表为["next", "print", "email"]
+            // 那么它们不符合条件
+            // 如果需要展示的按钮列表为["previous", "jumpto", "next"]，仍然不符合条件，因为它们结尾的按钮不是最后一个按钮
+            const isContinuousAtEnd = toolBtnNameArray.every((toolBtnName, index) => {
+                const toolBtnKeys = Object.keys(this.toolBtns);
+                const offsetIndex = toolBtnKeys.length - toolBtnNameArray.length + index;
+                const targetToolBtnName = toolBtnKeys[offsetIndex];
+
+                return toolBtnName === targetToolBtnName;
+            });
+            // 判断当前活跃的按钮列表是否为空
+            const isActiveToolBtnsEmpty = this.previousActiveToolBtns.length === 0;
+
+            // 判断隐藏动画执行完成后的工具栏是否为空，
+            // 判断方法为：this.activeToolBtns 和 this.previousActiveToolBtns 的交集是否为空
+            const isHideToolBtnsEmpty = this.activeToolBtns.filter(toolBtnName => this.previousActiveToolBtns.includes(toolBtnName)).length === 0;
+
+            // 判断是否需要跳过恢复高度动画
+            const skipRestoreHeightAnimation = isContinuousAtEnd || isActiveToolBtnsEmpty || isHideToolBtnsEmpty;
+
+            const showBtnAnimation = $toolBtns.map((_, element) => {
+                const $element = $(element);
+                return {
+                    selector: $element,
+                    duration: skipRestoreHeightAnimation ? 0 : 300,
+                    params: {
+                        height: $element.attr("data-animate-height"),
+                        "margin-top": $element.attr("data-animate-margin-top"),
+                        "margin-bottom": $element.attr("data-animate-margin-bottom"),
+                        "padding-top": $element.attr("data-animate-padding-top"),
+                        "padding-bottom": $element.attr("data-animate-padding-bottom"),
+                    },
+                };
+            }).get();
+
+            const moveAnimation = {
+                selector: $toolBtns,
+                duration: 300,
+                params: {
+                    transform: "translateX(0px)",
+                },
+            }
+
+            const animationQuene = [
+                {
+                    selector: $toolBtns,
+                    duration: 0,
+                    params: {
+                        display: "block",
+                    },
+                },
+                showBtnAnimation,
+                moveAnimation
+            ];
+
+            // 如果隐藏动画执行完成后的工具栏为空（工具栏从一些按钮完全换成另一些按钮，换之前和换之后没有交集），
+            // 且之前不为空（也就是说，工具栏不能刚刚从空变成不空）
+            if (isHideToolBtnsEmpty && !isActiveToolBtnsEmpty) {
+                animationQuene.unshift({
+                    delay: 300,
+                });
+            }
+
+            this.showAnimation = new Animate({
+                quene: animationQuene,
+                callback: () => {
+                    $toolBtns.removeAttr("style");
+                    $toolBtns.removeAttr("data-animate-height data-animate-margin-top data-animate-margin-bottom data-animate-padding-top data-animate-padding-bottom");
+                    this.showAnimation = null;
+                },
+            });
+        }
+
+        /**
+         * 更新任务栏
+         * @param {string[]} toolBtnNameArray
+         * @returns {void}
+         */
+        updateToolBarButtons(toolBtnNameArray) {
+            this.previousActiveToolBtns = Array.from(this.activeToolBtns); // 深拷贝
+            this.activeToolBtns = toolBtnNameArray;
+            const hideToolBtns = this.previousActiveToolBtns.filter(toolBtnName => !this.activeToolBtns.includes(toolBtnName));
+            const showToolBtns = this.activeToolBtns.filter(toolBtnName => !this.previousActiveToolBtns.includes(toolBtnName));
+            // console.log(this.previousActiveToolBtns, this.activeToolBtns);
+            this.hideToolBtns(hideToolBtns);
+            this.showToolBtns(showToolBtns);
+        }
+
+        /**
+         * 更新工具栏的功能，在切换了页面之后需要调用此函数以调整分页按钮的功能
+         * @param {object} functions
+         * @returns {void}
+         */
+        updateToolBarFunctions(functions) {
+            Object.keys(functions).forEach(toolName => {
+                this.toolBtns[toolName].function = functions[toolName];
+            });
+        }
+    }
+
+    class Pagination {
+        constructor(config) {
+            this.$element = config.element instanceof jQuery ? config.element : $(config.element);
+            this.contents = config.contents || [];
+            this.page = config.page || 1;
+            this.totalPage = config.totalPage || this.contents.length;
+            // 没有参数的话就是totalPage个null组成的数组，例如：[null, null, null, null, null]
+            this.onDisplay = config.onDisplay || Array.from({ length: this.totalPage }, () => null);
+        }
+
+        async changePage(page, animation = true) {
+            const html = this.contents[page - 1];
+
+            const pageOnDisplay = this.onDisplay[page - 1] || (() => { });
+
+            if (!animation) {
+                this.$element.html(html);
+                pageOnDisplay();
+                return;
+            }
+
+            this.$element.css("opacity", 0);
+
+            // 使用 Promise 替换 setTimeout
+            await new Promise(resolve => setTimeout(resolve, 150));
+
+            // 把对应的文字按照换行符分割成数组，然后遍历数组，把每一行文字用p标签包裹起来
+            this.$element.html(html);
+            pageOnDisplay();
+            this.$element.css("opacity", 1);
+        }
+
+        nextPage() {
+            if (this.page === this.totalPage) {
+                return;
+            }
+            this.page++;
+            this.changePage(this.page);
+        }
+
+        previousPage() {
+            if (this.page === 1) {
+                return;
+            }
+            this.page--;
+            this.changePage(this.page);
+        }
+
+        jumpToPage(page) {
+            if (page < 1 || page > this.totalPage || page === this.page) {
+                return;
+            }
+            this.page = page;
+            this.changePage(this.page);
+        }
+    }
+
+    class Paper {
+        /**
+         * @param {object} config
+         * @param {string} config.sectionBar 侧边栏的选择器，可以是jQuery对象，也可以是选择器字符串，还可以是原生的DOM对象
+         */
+        constructor(config) {
+            const $sectionBar = config.sectionBar instanceof jQuery ? config.sectionBar : $(config.sectionBar);
+            this.$sectionBar = $sectionBar;
+            // 页面
+            this.pages = [
+                {
+                    id: "paper-report",
+                    name: "Report",
+                    toolBar: ["previous", "jumpto", "next", "save", "print", "email"],
+                    pagination: new Pagination({
+                        element: "#paper-report",
+                        page: 1,
+                        // totalPage: 5,
+                        contents: texts,
+                    }),
+                },
+                {
+                    id: "paper-insights",
+                    name: "Insights",
+                    toolBar: ["save", "print", "email"],
+                    pagination: new Pagination({
+                        element: "#paper-insights",
+                        page: 1,
+                        onDisplay: [
+                            showDatGraph,
+                        ],
+                        // totalPage: 5,
+                        contents: charts,
+                    }),
+                },
+                {
+                    id: "paper-history",
+                    name: "History",
+                    toolBar: ["previous", "jumpto", "next"],
+                    pagination: new Pagination({
+                        element: "#paper-history",
+                        page: 1,
+                        // totalPage: 5,
+                        contents: results,
+                    }),
+                },
+                {
+                    id: "paper-settings",
+                    name: "Settings",
+                    toolBar: [],
+                    pagination: new Pagination({
+                        element: "#paper-settings",
+                        page: 1,
+                        // totalPage: 5,
+                        contents: texts,
+                    }),
+                }
+            ];
+
+            this.toolBar = new ToolBar({
+                toolBar: "#tool-bar",
+                initialToolBtns: this.pages[0].toolBar,
+            });
+
+            this.init = this.init.bind(this);
+            this.handleTabOnShow = this.handleTabOnShow.bind(this);
+            this.init();
+        }
+
+        init() {
+            // 监听bootstrap的tab事件
+            this.$sectionBar
+                .find('a[data-bs-toggle="tab"]')
+                .on('shown.bs.tab', this.handleTabOnShow);
+            //加载第一个页面
+            this.handleTabOnShow({ target: this.$sectionBar.find('a[data-bs-toggle="tab"]')[0] });
+
+        }
+
+        handleTabOnShow(event) {
+            const $target = $(event.target); // newly activated tab
+            const $previous = $(event.relatedTarget); // previous active tab
+            const targetId = $target.attr("href").slice(1);
+            // const previousId = $previous.attr("href").slice(1);
+            const targetPage = this.pages.find(page => page.id === targetId);
+            // const previousPage = this.pages.find(page => page.id === previousId);
+            // 显示这个页面，填充内容
+            targetPage.pagination.changePage(targetPage.pagination.page, false);
+            this.toolBar.updateToolBarButtons(targetPage.toolBar);
+            this.pagination = targetPage.pagination;
+
+            if (this.pagination.page === 1) {
+                this.toolBar.toolBtns.previous.disable();
+                this.toolBar.toolBtns.next.enable();
+            } else if (this.pagination.page === this.pagination.totalPage) {
+                this.toolBar.toolBtns.previous.enable();
+                this.toolBar.toolBtns.next.disable();
+            } else {
+                this.toolBar.toolBtns.previous.enable();
+                this.toolBar.toolBtns.next.enable();
+            }
+            this.toolBar.toolBtns.jumpto.setValue(this.pagination.page);
+            this.toolBar.toolBtns.jumpto.setRange(1, this.pagination.totalPage);
+
+            this.toolBar.updateToolBarFunctions({
+                previous: () => {
+                    if (this.pagination.page === 1) {
+                        return;
+                    }
+                    this.pagination.previousPage();
+                    this.toolBar.toolBtns.jumpto.setValue(this.pagination.page);
+                    this.toolBar.toolBtns.next.enable();
+                    if (this.pagination.page === 1) {
+                        this.toolBar.toolBtns.previous.disable();
+                    }
+
+                    // this.pagination.previousPage();
+                    // console.log("previous");
+                },
+                jumpto: () => {
+                    this.pagination.jumpToPage(this.toolBar.toolBtns.jumpto.getValue());
+                    if (this.pagination.page === 1) {
+                        this.toolBar.toolBtns.previous.disable();
+                        this.toolBar.toolBtns.next.enable();
+                    } else if (this.pagination.page === this.pagination.totalPage) {
+                        this.toolBar.toolBtns.next.disable();
+                        this.toolBar.toolBtns.previous.enable();
+                    } else {
+                        this.toolBar.toolBtns.previous.enable();
+                        this.toolBar.toolBtns.next.enable();
+                    }
+                },
+                next: () => {
+                    if (this.pagination.page === this.pagination.totalPage) {
+                        return;
+                    }
+                    this.pagination.nextPage();
+                    this.toolBar.toolBtns.jumpto.setValue(this.pagination.page);
+                    this.toolBar.toolBtns.previous.enable();
+                    if (this.pagination.page === this.pagination.totalPage) {
+                        this.toolBar.toolBtns.next.disable();
+                    }
+                }
+            });
+            // if (targetPage.pagination) {
+            //     // console.log("pagination");
+            //     this.pagination = new Pagination({
+            //         element: `#${targetId} div`,
+            //         page: 1,
+            //         totalPage: 5,
+            //         contents: texts,
+            //     });
+            //     this.toolBar.updateToolBarButtons(targetPage.toolBar);
+            //     this.toolBar.updateToolBarFunctions({
+            //         previous: () => {
+            //             if (this.pagination.page === 1) {
+            //                 return;
+            //             }
+            //             this.pagination.previousPage();
+            //             this.toolBar.toolBtns.next.enable();
+            //             if (this.pagination.page === 1) {
+            //                 this.toolBar.toolBtns.previous.disable();
+            //             }
+
+            //             // this.pagination.previousPage();
+            //             // console.log("previous");
+            //         },
+            //         jumpto: () => {
+            //             this.pagination.jumpToPage(this.toolBar.toolBtns.jumpto.getValue());
+            //         },
+            //         next: () => {
+            //             if (this.pagination.page === this.pagination.totalPage) {
+            //                 return;
+            //             }
+            //             this.pagination.nextPage();
+            //             this.toolBar.toolBtns.previous.enable();
+            //             console.log(this.pagination.page, this.pagination.totalPage);
+            //             console.log(this.pagination.page === this.pagination.totalPage);
+            //             if (this.pagination.page === this.pagination.totalPage) {
+            //                 this.toolBar.toolBtns.next.disable();
+            //                 console.log(this.toolBar.toolBtns.next);
+            //             }
+            //         }
+            //     });
+            //     // console.log(this.toolBar.toolBtns.next.function());
+            //     // console.log(this.toolBar.toolBtns.next.function);
+            //     // console.log(this.toolBar.toolBtns.next.function());
+            // }
+        }
+    }
+
+    const paper = new Paper({
+        sectionBar: "#section-bar",
     });
+
 </script>
 
 </html>
