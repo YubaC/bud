@@ -304,66 +304,6 @@
                 </style>
 
                 <script>
-                    var page = 1;
-                    // $("button.paper-nav-item").click(function () {
-                    //     if ($(this).hasClass("disabled")) {
-                    //         return;
-                    //     }
-                    //     // $("button.paper-nav-item").removeClass("active");
-                    //     $(this).addClass("active");
-                    //     setTimeout(function () {
-                    //         $("button.paper-nav-item").removeClass("active");
-                    //     }, 150);
-                    // });
-                    // 阻止文本框的点击事件冒泡
-                    // $("button.paper-nav-item input").click(function (event) {
-                    //     event.stopPropagation();
-                    // });
-                    // $("#paper-previous").click(function () {
-                    //     if (page === 1) {
-                    //         $(this).addClass("disabled");
-                    //         return;
-                    //     } else if (page === 2) {
-                    //         $(this).addClass("disabled");
-                    //     }
-                    //     page--;
-                    //     $("#paper-next").removeClass("disabled");
-                    //     $("#paper-jumpto input").val(page);
-                    //     changePage();
-                    // });
-
-                    // $("#paper-next").click(function () {
-                    //     if (page === 5) {
-                    //         $(this).addClass("disabled");
-                    //         return;
-                    //     } else if (page === 4) {
-                    //         $(this).addClass("disabled");
-                    //     }
-                    //     page++;
-                    //     $("#paper-previous").removeClass("disabled");
-                    //     $("#paper-jumpto input").val(page);
-                    //     changePage();
-                    // });
-
-                    // $("#paper-jumpto").click(function () {
-                    //     newPage = Number($(this).find("input").val());
-                    //     if (newPage < 1 || newPage > 5 || newPage === page) {
-                    //         return;
-                    //     }
-                    //     page = newPage;
-                    //     if (page === 1) {
-                    //         $("#paper-previous").addClass("disabled");
-                    //         $("#paper-next").removeClass("disabled");
-                    //     } else if (page === 5) {
-                    //         $("#paper-next").addClass("disabled");
-                    //         $("#paper-previous").removeClass("disabled");
-                    //     } else {
-                    //         $("#paper-previous").removeClass("disabled");
-                    //         $("#paper-next").removeClass("disabled");
-                    //     }
-                    //     changePage();
-                    // });
-
                     const texts = [
                         `[Page 1] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices tempus aliquam. Vestibulum vehicula massa ex, ut mattis sem volutpat nec. Donec malesuada volutpat molestie. Proin id velit arcu. Phasellus accumsan consectetur libero non vestibulum. Donec sollicitudin, lacus pulvinar pharetra molestie, quam sapien pretium sem, in sodales diam mi id odio. Sed tincidunt augue vel quam venenatis posuere. Nam sodales diam ornare maximus venenatis. Aliquam condimentum justo sit amet consequat malesuada. Nulla volutpat dui a arcu elementum hendrerit. Nunc egestas elementum ipsum, ut laoreet nibh condimentum id. Praesent nec dolor sagittis, consectetur sem in, pharetra leo. Vestibulum odio urna, luctus nec elit eu, rhoncus rutrum libero.
 
@@ -408,6 +348,18 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                                         tense="past"></relative-time>
                                 </div>
                             </a>
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2022-06-28T17:09:18.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
+                            <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
+                                <img src="./images/bone-hand.jpg" alt="" class="w-100">
+                                <div class="name"><relative-time datetime="2022-06-28T17:09:18.000Z"
+                                        tense="past"></relative-time>
+                                </div>
+                            </a>
                         </div>`,
                         `<div class="row mx-auto w-100">
                             <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
@@ -425,32 +377,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                             <a href="/" class="archive-card card col-md-5 empty"></a>
                             <div class="col-md-5 mx-auto"></div>
                         </div>`,
-                    ]
-
-                    function changePage() {
-                        $("#paper-report").find("div").css("opacity", 0);
-                        setTimeout(function () {
-                            // 把对应的文字按照换行符分割成数组，然后遍历数组，把每一行文字用p标签包裹起来
-                            const html = texts[page - 1]
-                                .split("\n")
-                                .filter(text => text.trim() !== "")
-                                .map(text => `<p>${text}</p>`).join("");
-                            $("#paper-report").find("div").html(html);
-                            $("#paper-report").find("div").css("opacity", 1);
-                        }, 150);
-                        // var myTabEl = document.querySelector('#paper-report p')
-                        // var tab = new bootstrap.Tab(myTabEl);
-                        // tab.hide();
-                    }
-
-                    function show() {
-                        $(".paper-nav-left").css("transform", "translateX(0px)");
-                    }
-                    function hide() {
-                        $(".paper-nav-left").css("transform", "translateX(200px)");
-                    }
-
-                    // changePage();
+                    ];
                 </script>
 
                 <nav id="section-bar" class="paper-nav paper-nav-right nav flex-column">
@@ -466,14 +393,6 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                         <i class="fas fa-history fa-fw me-2" aria-hidden="true"></i>
                         <span>History</span>
                     </a>
-                    <!-- <a href="#paper-insights" class="paper-nav-item" data-bs-toggle="tab">
-                        <i class="fas fa-home me-2"></i>
-                        <span>Home</span>
-                    </a>
-                    <a href="#paper-insights" class="paper-nav-item" data-bs-toggle="tab">
-                        <i class="fas fa-home me-2"></i>
-                        <span>Home</span>
-                    </a> -->
                     <a href="#paper-settings" class="paper-nav-item" data-bs-toggle="tab">
                         <i class="fas fa-cog fa-fw me-2" aria-hidden="true"></i>
                         <span>Settings</span>
@@ -483,41 +402,13 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                 <div class="a4-paper sticky-note">
                     <div class="tab-content mt-5">
                         <div id="paper-report" class="tab-pane fade active show w-100">
-                            <h2 class="text-center">Report</h2>
-                            <!-- <p>
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium asperiores earum
-                                sunt tempora officia voluptatum natus cumque quia neque laudantium incidunt aspernatur,
-                                possimus ipsa, molestias doloribus dicta pariatur placeat? Optio?
-                            </p> -->
-                            <div></div>
+                            <!-- <h2 class="text-center">Report</h2> -->
                         </div>
                         <div id="paper-insights" class="tab-pane fade w-100">
-                            <!-- <h3 class="text-center">Insights</h3> -->
-
                             <div id="kid-chart" class="mt-4"></div>
-
-                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p> -->
                         </div>
 
-                        <div id="paper-history" class="tab-pane fade w-100">
-                            <!-- <div class="row mx-auto w-100">
-                                <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
-                                    <img src="./images/bone-hand.jpg" alt="" class="w-100">
-                                    <div class="name"><relative-time datetime="2024-01-04T15:02:18.000Z"
-                                            tense="past"></relative-time>
-                                    </div>
-                                </a>
-                                <a href="./archive.html" class="archive-card card col-md-5 mx-auto shadow-sm">
-                                    <img src="./images/bone-hand.jpg" alt="" class="w-100">
-                                    <div class="name"><relative-time datetime="2022-02-28T17:09:18.000Z"
-                                            tense="past"></relative-time>
-                                    </div>
-                                </a>
-                                <a href="/" class="archive-card card col-md-5 empty"></a>
-                                <div class="col-md-5 mx-auto"></div>
-                            </div> -->
-                        </div>
+                        <div id="paper-history" class="tab-pane fade w-100"></div>
 
                         <div id="paper-settings" class="tab-pane fade w-100">
                             <h3 class="text-center">Settings</h3>
@@ -525,37 +416,6 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                                 laudantium, totam rem aperiam.</p>
                         </div>
                     </div>
-                    <!-- <h1 class="text-center">Upload your X-ray image</h1>
-                    <h2 class="mt-4">Instructions</h2>
-                    <p class="mt-4">Thank you for choosing our service！</p>
-                    <p class="mt-4">
-                        <strong>We need you to:</strong>
-                    <ul>
-                        <li>Upload a front view X-ray of your child's hand.</li>
-                        <li>Fill in the age of your child.</li>
-                    </ul>
-                    </p>
-                    <p class="mt-4">This is for us to conduct a bone age assessment.</p>
-
-                    <p>Thank you again for your cooperation!</p>
-
-                    <p class="text-end">BUD Team</p>
-
-                    <form class="w-75 mx-auto">
-                        <div class="mb-3">
-                            <label for="imageUpload" class="form-label">X-ray Image</label>
-                            <div class="input-group">
-                                <input type="file" class="form-control" id="imageUpload" accept="image/*" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="age" class="form-label">Age</label>
-                            <div class="input-group">
-                                <input type="number" class="form-control" id="age" min="0" max="18" required>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100 mt-4">Submit</button>
-                    </form> -->
                 </div>
             </div>
         </div>
@@ -631,7 +491,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
         $('#kid-chart').highcharts(json);
     }
 
-
+    // 这个类用于管理动画，包括动画的执行和停止
     class Animate {
         /**
          * @param {object} config
@@ -729,6 +589,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
         }
     }
 
+    // 这个类用于管理工具栏，包括工具栏按钮的显示和隐藏
     class ToolBar {
         /**
          * @param {object} config
@@ -1076,7 +937,17 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
         }
     }
 
+    // 这个类用于管理分页的内容，包括切换页面、跳转页面、存储不同页面内容等
     class Pagination {
+        /**
+         * @param {object} config 设置分页的配置
+         * @param {string} config.element 分页的选择器，可以是jQuery对象，也可以是选择器字符串，还可以是原生的DOM对象
+         * @param {string[]} [config.contents] 每一页的内容，是一个数组，数组的每一项都是一个字符串，每个字符串都是HTML代码
+         * @param {number} [config.page] (可选)当前页码，默认为1
+         * @param {number} [config.totalPage] (可选)总页数，默认为contents的长度
+         * @param {function[]} [config.onDisplay] (可选)每一页显示时的回调函数，是一个数组，数组的每一项都是一个函数，如果当前页没有回调函数，则使用null占位
+         */
+
         constructor(config) {
             this.$element = config.element instanceof jQuery ? config.element : $(config.element);
             this.contents = config.contents || [];
@@ -1086,6 +957,12 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
             this.onDisplay = config.onDisplay || Array.from({ length: this.totalPage }, () => null);
         }
 
+        /**
+         * 切换到指定页
+         * @param {number} page 要切换到的页码
+         * @param {boolean} [animation=true] 是否使用动画，默认为true
+         * @returns {void}
+         */
         async changePage(page, animation = true) {
             const html = this.contents[page - 1];
 
@@ -1108,6 +985,10 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
             this.$element.css("opacity", 1);
         }
 
+        /** 
+         * 下一页
+         * @returns {void}
+         */
         nextPage() {
             if (this.page === this.totalPage) {
                 return;
@@ -1116,6 +997,10 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
             this.changePage(this.page);
         }
 
+        /** 
+         * 上一页
+         * @returns {void}
+         */
         previousPage() {
             if (this.page === 1) {
                 return;
@@ -1124,6 +1009,11 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
             this.changePage(this.page);
         }
 
+        /** 
+         * 跳转到指定页
+         * @param {number} page 要跳转到的页码
+         * @returns {void}
+         */
         jumpToPage(page) {
             if (page < 1 || page > this.totalPage || page === this.page) {
                 return;
@@ -1133,6 +1023,7 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
         }
     }
 
+    // 这个类用于管理板夹上的整个页面，包括页面的切换、工具栏的更新、分页器的更新等
     class Paper {
         /**
          * @param {object} config
@@ -1202,6 +1093,10 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
             this.init();
         }
 
+        /**
+         * 初始化函数
+         * @returns {void}
+         */
         init() {
             // 监听bootstrap的tab事件
             this.$sectionBar
@@ -1209,9 +1104,13 @@ Pellentesque ornare semper arcu, ac luctus dui ornare vel. Maecenas turpis lacus
                 .on('shown.bs.tab', this.handleTabOnShow);
             //加载第一个页面
             this.handleTabOnShow({ target: this.$sectionBar.find('a[data-bs-toggle="tab"]')[0] });
-
         }
 
+        /**
+         * 在切换页面时调用的函数，负责更新工具栏和分页器按钮绑定的函数
+         * @param {event} event 事件对象
+         * @returns {void}
+         */
         handleTabOnShow(event) {
             const $target = $(event.target); // newly activated tab
             const $previous = $(event.relatedTarget); // previous active tab
