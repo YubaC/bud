@@ -1,0 +1,84 @@
+/* ====colors==== */
+// 定义颜色变量
+$colors: (
+    "lightgreen": #b5cc54,
+    "darkgreen": #71b052,
+    "darkyellow": #f1c74d,
+    "lightyellow": #f8e396,
+    "transparent": transparent,
+    "rgb": linear-gradient(135deg,
+        rgba(191, 57, 137, 1) 0%,
+        rgba(9, 107, 222, 1) 100%),
+);
+
+// 生成背景颜色和文本颜色类
+@each $color, $value in $colors
+{
+    .bg-#{$color}
+    {
+        background-color: $value !important;
+    }
+
+    .text-#{$color}
+    {
+        color: $value !important;
+    }
+}
+
+/* ====fonts==== */
+@font-face
+{
+    font-family: "Book Antiqua";
+    src: url("../fonts/BKANT.TTF") format("truetype"),
+        url("../fonts/ANTQUAB.TTF") format("truetype");
+}
+
+@font-face
+{
+    font-family: "Eras Medium ITC";
+    src: url("../fonts/ERASMD.TTF") format("truetype");
+}
+
+/* ====set type==== */
+/* ----colored card---- */
+.colored-card
+{
+    border-radius: 2rem;
+}
+
+/* ----.title class---- */
+.title
+{
+    font-family: "Book Antiqua", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5c6f8a;
+}
+
+h1.title
+{
+    font-size: 4rem;
+    color: #000;
+}
+
+h2.title
+{
+    font-size: 2.5rem;
+    color: #000;
+}
+
+// 生成边距类
+$directions: (
+    "top": "t",
+    "bottom": "b",
+    "left": "s",
+    "right": "e"
+);
+
+@each $direction, $abbreviation in $directions
+{
+    .m#{$abbreviation}-divider
+    {
+        margin-#{$direction}: 100px !important;
+    }
+}

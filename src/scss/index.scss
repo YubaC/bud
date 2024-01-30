@@ -1,0 +1,96 @@
+@import "./widgets/common.scss";
+@import "./widgets/note-paper.scss";
+@import "./widgets/utils.scss";
+$box-shadow-color: rgba(0, 0, 0, 1);
+$font-size: 1.5rem;
+$line-height: 1.4em;
+$text-align: center;
+$letter-spacing: 0.3rem;
+$odd-color: #5c6f8a;
+$even-font-weight: 600;
+$even-text-align: right;
+$even-color: green;
+
+.introduce-img
+{
+    box-shadow: 0 0 10px $box-shadow-color;
+    position: absolute;
+    width: 750px;
+    height: auto;
+    top: -125px;
+    right: -50px;
+}
+
+.introduce-container
+{
+    width: calc(100vw - 750px);
+    margin-left: 75px;
+}
+
+.introduction-subtitle
+{
+    font-size: $font-size;
+    line-height: $line-height;
+    text-align: $text-align;
+    letter-spacing: $letter-spacing;
+}
+
+.user-images-list
+{
+    list-style: none;
+
+    .user-image-container
+    {
+        margin: 20px;
+
+        .user-image
+        {
+            width: 100px;
+        }
+    }
+}
+
+table
+{
+    thead
+    {
+        font-size: 1.5em;
+    }
+
+    tbody
+    {
+        font-size: 1.15em;
+
+        td:nth-child(odd)
+        {
+            color: $odd-color;
+
+            &::before
+            {
+                content: "❌";
+                margin-right: 10px;
+            }
+        }
+
+        td:nth-child(even)
+        {
+            font-weight: $even-font-weight;
+            text-align: $even-text-align;
+
+            &::after
+            {
+                content: "✔︎";
+                font-size: 1.25em;
+                color: $even-color;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .table tr td,
+    .table tr th
+    {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
