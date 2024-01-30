@@ -26,6 +26,14 @@
     background-color: transparent !important;
 }
 
+.bg-rgb {
+    background: linear-gradient(
+        135deg,
+        rgba(191, 57, 137, 1) 0%,
+        rgba(9, 107, 222, 1) 100%
+    ) !important;
+}
+
 .text-lightyellow {
     color: var(--bg-lightyellow) !important;
 }
@@ -37,13 +45,13 @@
 /* ====fonts==== */
 @font-face {
     font-family: "Book Antiqua";
-    src: url("/fonts/BKANT.TTF") format("truetype"),
-        url("/fonts/ANTQUAB.TTF") format("truetype");
+    src: url("../../fonts/BKANT.TTF") format("truetype"),
+        url("../../fonts/ANTQUAB.TTF") format("truetype");
 }
 
 @font-face {
     font-family: "Eras Medium ITC";
-    src: url("/fonts/ERASMD.TTF") format("truetype");
+    src: url("../../fonts/ERASMD.TTF") format("truetype");
 }
 
 /* ====set type==== */

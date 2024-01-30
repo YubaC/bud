@@ -1,0 +1,75 @@
+/* 导入CSS */
+@import url("widgets/common.css");
+@import url("widgets/note-paper.css");
+@import url("widgets/utils.css");
+
+.introduce-img {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    position: absolute;
+    width: 750px;
+    height: auto;
+    top: -125px;
+    right: -50px;
+}
+
+.introduce-container {
+    width: calc(100vw - 750px);
+    margin-left: 75px;
+}
+
+.introduction-subtitle {
+    font-size: 1.5rem;
+    line-height: 1.4em;
+    text-align: center;
+    letter-spacing: 0.3rem;
+}
+
+/* ====for user comments==== */
+.user-images-list {
+    list-style: none;
+}
+
+.user-image-container {
+    margin: 20px;
+}
+
+.user-image {
+    width: 100px;
+}
+
+/* ====vs table==== */
+table thead {
+    font-size: 1.5em;
+}
+
+table tbody {
+    font-size: 1.15em;
+}
+
+.table tr td,
+.table tr th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+table tbody td:nth-child(odd) {
+    color: #5c6f8a;
+}
+
+table tbody td:nth-child(odd)::before {
+    content: "❌";
+    margin-right: 10px;
+}
+
+table tbody td:nth-child(even) {
+    /* bold */
+    font-weight: 600;
+    text-align: right;
+}
+
+table tbody td:nth-child(even)::after {
+    content: "✔︎";
+    font-size: 1.25em;
+    color: green;
+    margin-left: 10px;
+}
