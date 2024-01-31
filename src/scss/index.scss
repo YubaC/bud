@@ -35,19 +35,9 @@ $even-color: green;
     letter-spacing: $letter-spacing;
 }
 
-.user-images-list
+.user-image
 {
-    list-style: none;
-
-    .user-image-container
-    {
-        margin: 20px;
-
-        .user-image
-        {
-            width: 100px;
-        }
-    }
+    width: 100px;
 }
 
 table
