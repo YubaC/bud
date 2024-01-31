@@ -1,0 +1,61 @@
+$card-border-radius: 10px;
+$card-bg-color: rgba(0, 0, 0, 0.5);
+$card-font-size: 1.2rem;
+$card-transition: transform 500ms;
+$card-hover-scale: 1.04;
+$card-hover-transition: 0.3s;
+
+.archive-card
+{
+    aspect-ratio: 1 / 1.35;
+    border-radius: $card-border-radius;
+    cursor: pointer;
+    margin: auto;
+    width: 23%;
+    will-change: transform;
+    transition: $card-transition;
+
+    &:hover,
+    &:focus
+    {
+        transform: scale($card-hover-scale);
+        transition: $card-hover-transition;
+    }
+
+    &.empty
+    {
+        background-color: rgba(0, 0, 0, 0.2);
+        background-image: url("data:image/svg+xml,%3Csvg width='' height='' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M874.67 469.33H554.67V149.33c0-23.47-19.2-42.67-42.67-42.67s-42.67 19.2-42.67 42.666666v320H149.33c-23.47 0-42.67 19.2-42.67 42.67s19.2 42.67 42.67 42.666667h320v320c0 23.47 19.2 42.67 42.67 42.67s42.67-19.2 42.67-42.67V554.666667h320c23.47 0 42.67-19.2 42.67-42.67s-19.2-42.67-42.67-42.67z' fill='rgba(0, 0, 0, 0.25)'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 60% 60%;
+        background-position: center;
+        border-width: 3px;
+        border-style: dotted;
+
+        &:hover,
+        &:focus
+        {
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        &:active
+        {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .name
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: $card-bg-color;
+        color: #fff;
+        font-size: $card-font-size;
+        text-align: center;
+        border-bottom-left-radius: $card-border-radius;
+        border-bottom-right-radius: $card-border-radius;
+    }
+}

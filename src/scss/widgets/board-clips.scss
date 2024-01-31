@@ -1,0 +1,50 @@
+$base-plate-border: 10px solid #472213;
+$base-plate-border-radius: 20px;
+$base-plate-padding: 15mm 18mm 15mm 15mm;
+$base-plate-shadow: 10px 10px 5px #888888;
+$base-plate-bg: linear-gradient(45deg, #7d361a, #9d461a);
+/* ======================= */
+$a4-paper-aspect-ratio: 1 / 1.414;
+$a4-paper-width: 210mm;
+$a4-paper-height: 297mm;
+$a4-paper-margin: 0 auto;
+$a4-paper-padding: 25.4mm 31.8mm;
+
+.base-plate
+{
+    position: relative;
+    background: $base-plate-bg;
+    border: $base-plate-border;
+    box-shadow: $base-plate-shadow;
+    border-radius: $base-plate-border-radius;
+    padding: $base-plate-padding;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+
+    &::before
+    {
+        content: "";
+        position: absolute;
+        top: -15mm;
+        left: 50%;
+        transform: translateX(-50%);
+        aspect-ratio: 308 / 184;
+        width: 75mm;
+        background-image: url("/images/clip.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        z-index: 2;
+    }
+
+    .a4-paper
+    {
+        position: relative;
+        aspect-ratio: $a4-paper-aspect-ratio;
+        width: $a4-paper-width;
+        height: $a4-paper-height;
+        margin: $a4-paper-margin;
+        padding: $a4-paper-padding;
+    }
+}
