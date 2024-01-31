@@ -1,11 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: "./src/js/index.js",
+    entry: {
+        index: "./src/js/index.js",
+        home: "./src/js/home.js",
+    },
     output: {
-        filename: "bundle.js",
+        filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
         clean: true,
     },
@@ -13,44 +17,35 @@ module.exports = {
         rules: [
             {
                 test: /\.s?css$|\.sass$/,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
-            // {
-            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            //     loader: "file-loader",
-            //     options: {
-            //         name: "[path][name].[ext]",
-            //     },
-            // },
-            // {
-            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            //     type: "asset/resource",
-            // },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: "asset/resource",
             },
         ],
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/html/index.html",
             filename: "index.html",
-            // 使用index.css
+            chunks: ["index"],
         }),
         new HtmlWebpackPlugin({
-            template: "./src/html/relative-test.html",
-            filename: "relative-test/index.html",
+            template: "./src/html/home.html",
+            filename: "home.html",
+            chunks: ["home"],
         }),
         new CopyWebpackPlugin({
             patterns: [
-                // { from: "./src/fonts", to: "fonts" },
                 { from: "./src/images", to: "images" },
                 { from: "./src/lib", to: "lib" },
                 { from: "./src/resources", to: "resources" },
-                // 添加其他需要复制的文件或文件夹
             ],
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css",
         }),
     ],
 };
