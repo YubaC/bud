@@ -6,14 +6,22 @@ const path = require("path");
 const packageData = require("./package.json");
 
 const banner = () => {
-    const name = packageData.name
+    const name = formatName(packageData.name);
+    const year = new Date().getFullYear();
+    const license = packageData.license;
+    return formatBannerString(name, packageData.version, year, license);
+};
+
+const formatName = (name) => {
+    return name
         .split("-")
         .map((item) => item[0].toUpperCase() + item.slice(1))
         .join(" ");
-    const year = new Date().getFullYear();
-    const license = packageData.license;
-    const bannerString = `
-        ${name} v${packageData.version}
+};
+
+const formatBannerString = (name, version, year, license) => {
+    return `
+        ${name} v${version}
         Copyright (c) 2015-${year} Yuba Technology
         Released under the ${license} License.
         `
@@ -21,7 +29,6 @@ const banner = () => {
         .filter((item) => item.trim() !== "")
         .map((item) => item.trim())
         .join("\n");
-    return bannerString;
 };
 
 module.exports = merge(common, {
